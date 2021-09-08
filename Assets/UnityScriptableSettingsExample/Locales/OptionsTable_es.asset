@@ -1,0 +1,667 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: OptionsTable_es
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: 18ec60e56d612e2408ec4cbf19ca8104, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 879682441216
+    m_Localized: Jugar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879724384256
+    m_Localized: Opciones
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879728578560
+    m_Localized: Salir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879728578561
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772864
+    m_Localized: "Gr\xE1ficos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772865
+    m_Localized: Controles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772866
+    m_Localized: Analytics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772867
+    m_Localized: Continuar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772868
+    m_Localized: "atr\xE1s"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772869
+    m_Localized: "Sensibilidad del rat\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772870
+    m_Localized: Bajo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772871
+    m_Localized: Elevado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772872
+    m_Localized: Medio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772873
+    m_Localized: Apagado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772874
+    m_Localized: "ChastityLocksmith env\xEDa datos an\xF3nimos anal\xEDticos con
+      el fin de mejorar el juego! Si desea evitar esto, haga clic en el bot\xF3n
+      de abajo (Se abrir\xE1 el navegador de internet)."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772875
+    m_Localized: Abrir pagina de privacidad de datos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772876
+    m_Localized: Restablecer los valores predeterminados
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772877
+    m_Localized: Guardar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772878
+    m_Localized: Carga
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772879
+    m_Localized: "calidad de la calcoman\xEDa"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772880
+    m_Localized: Modo ventana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772881
+    m_Localized: "Resoluci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772882
+    m_Localized: Resplandecer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772883
+    m_Localized: Desenfoque de movimiento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772884
+    m_Localized: "Oclusi\xF3n ambiental"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772885
+    m_Localized: Sombras
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772886
+    m_Localized: "C\xE9sped"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772887
+    m_Localized: Reflejos en pantalla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772888
+    m_Localized: Anti-aliasing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772889
+    m_Localized: "Grano de la pel\xEDcula"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772890
+    m_Localized: Volumen principal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772891
+    m_Localized: Volumen de efectos de sonido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772892
+    m_Localized: "Volumen de la m\xFAsica"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772893
+    m_Localized: "C\xE1mara fov"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772894
+    m_Localized: "Proyecci\xF3n de panini"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772895
+    m_Localized: Profundidad de campo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772896
+    m_Localized: Nubes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772897
+    m_Localized: Calidad general
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772898
+    m_Localized: Caminar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772899
+    m_Localized: Exclusivo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772900
+    m_Localized: Pantalla completa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772901
+    m_Localized: Ventana maxed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772902
+    m_Localized: Con ventana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772903
+    m_Localized: Encendido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772904
+    m_Localized: Idioma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772905
+    m_Localized: Jugabilidad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772906
+    m_Localized: ADVERTENCIA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772907
+    m_Localized: "ESTE JUEGO MUESTRA PERSONAJES FICTICIOS QUE PARTICIPAN EN <#FF0000>
+      COMPORTAMIENTO SEXUALMENTE EXPL\xCDCITO <#FFFFFF>\n\nAL HACER CLIC EN <#008CFF>
+      JUGAR <#FFFFFF> EST\xC1S DECLARANDO QUE:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772908
+    m_Localized: "\u2022 BAJO PENA DE PERJURIO, QUE ERES MAYOR DE 18 A\xD1OS.\n\u2022
+      La desnudez y representaciones expl\xEDcitas de la actividad sexual no ofenden
+      a USTED.\n\u2022 Se reconoce que usted es responsable de asegurar que TODAS
+      LAS PERSONAS QUE VEAN EL JUEGO desde su dispositivo son mayores de 18 a\xF1os."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772909
+    m_Localized: Okey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772910
+    m_Localized: "\xA1Bienvenido a ChastityLocksmith!\n\nEsta es una build del desarrollador
+      y est\xE1 totalmente sin terminar, \xA1as\xED que no esperes mucho!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772911
+    m_Localized: Moverse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772912
+    m_Localized: Salto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772913
+    m_Localized: Andar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772914
+    m_Localized: Gibraltar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772915
+    m_Localized: Usar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772916
+    m_Localized: Tomar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772917
+    m_Localized: Empujar Agarrar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772918
+    m_Localized: Agacharse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772919
+    m_Localized: "Ver estad\xEDsticas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772920
+    m_Localized: Girar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772921
+    m_Localized: Descongelar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772922
+    m_Localized: "Mu\xF1eca de trapo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772923
+    m_Localized: Cambiar el modo de agarre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772924
+    m_Localized: Mirar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772925
+    m_Localized: Activar Agarre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772926
+    m_Localized: Reiniciar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772927
+    m_Localized: Cargando...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772928
+    m_Localized: Escombros claros
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772929
+    m_Localized: Mejorar Agarre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772930
+    m_Localized: Cambiar camara
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772931
+    m_Localized: Agua
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772932
+    m_Localized: Kobold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772933
+    m_Localized: Hielo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772934
+    m_Localized: Leche
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772935
+    m_Localized: Batido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772936
+    m_Localized: Jugo de berenjena
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772937
+    m_Localized: "Jugo de mel\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772938
+    m_Localized: Suero de crecimiento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772939
+    m_Localized: Suero de crecimiento incompleto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772940
+    m_Localized: Reactivo inestable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772941
+    m_Localized: Semen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772942
+    m_Localized: Huevo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772943
+    m_Localized: gordo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772944
+    m_Localized: Amor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772945
+    m_Localized: No se encontraron reajustees
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772946
+    m_Localized: "Esc\xE1ner reactivo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772947
+    m_Localized: "Explosi\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772948
+    m_Localized: Potasio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772949
+    m_Localized: Multijugador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772950
+    m_Localized: "Juego r\xE1pido"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772951
+    m_Localized: Crear juego privado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772952
+    m_Localized: Sexo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772953
+    m_Localized: Matiz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772954
+    m_Localized: Top de abajo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772955
+    m_Localized: Espesor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772956
+    m_Localized: Brillo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772957
+    m_Localized: "Saturaci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772958
+    m_Localized: Contraste
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772959
+    m_Localized: Polla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772960
+    m_Localized: "Tama\xF1o de la polla"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772961
+    m_Localized: "Tama\xF1o de tetas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772962
+    m_Localized: Equino
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772963
+    m_Localized: Anudado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772964
+    m_Localized: Equino
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772965
+    m_Localized: "C\xF3nico"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772966
+    m_Localized: Ninguno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772967
+    m_Localized: En fuera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772968
+    m_Localized: Madera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772969
+    m_Localized: "\xDAnete al juego privado"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772970
+    m_Localized: "No hay habitaciones encontradas todav\xEDa ..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772971
+    m_Localized: Cancelar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772972
+    m_Localized: Entrar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772973
+    m_Localized: "Nombre de la habitaci\xF3n:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772974
+    m_Localized: 'Privado:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772975
+    m_Localized: "Jugadores m\xE1ximos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772976
+    m_Localized: "Tama\xF1o de Kobold"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772977
+    m_Localized: "Crear un juego p\xFAblico"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772978
+    m_Localized: Primera persona
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772979
+    m_Localized: Tercera persona
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772980
+    m_Localized: "C\xE1mara gratis"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772981
+    m_Localized: FreeCam Sticky
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772982
+    m_Localized: Navegador del servidor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772983
+    m_Localized: Jugadores
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772984
+    m_Localized: "Conexi\xF3n ..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772985
+    m_Localized: "Buscando habitaci\xF3n aleatoria"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772986
+    m_Localized: "Habitaci\xF3n izquierda"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772987
+    m_Localized: "\xA1Algo te hizo perder conexi\xF3n!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772988
+    m_Localized: "Jugo de pi\xF1a"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772989
+    m_Localized: Gordita
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772990
+    m_Localized: "Tama\xF1o de las bolas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772991
+    m_Localized: Calidad de espejo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772992
+    m_Localized: Hemipenis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772993
+    m_Localized: Vsync
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772994
+    m_Localized: Target de marco
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772995
+    m_Localized: "Barras de pez\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772996
+    m_Localized: Casco de seguridad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772997
+    m_Localized: "Un ligerable m\xE1gico que es largo y cil\xEDndrico con un anillo
+      medial."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772998
+    m_Localized: "Un hardhat simple para proteger la cabeza de las ca\xEDdas de escombros."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772999
+    m_Localized: "Un m\xE1gico acoplado con un nudo, anillo medial y algunas crestas
+      con baches."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773000
+    m_Localized: "Un ligerable m\xE1gico que es largo, cil\xEDndrico, y tiene una
+      punta de destello. Tiene una gran acci\xF3n telesc\xF3pica!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773001
+    m_Localized: "Barras de metal hipoalergindicas corporales simples. (S\xED, van
+      en tus pezones.)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773002
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773003
+    m_Localized: "Un apagado m\xE1gico que es largo y pasa a un punto. \xA1Sus bolas
+      est\xE1n internalizadas!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773004
+    m_Localized: La polla de kandi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773005
+    m_Localized: Bolsa de cola
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773006
+    m_Localized: Collar con pinchos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773007
+    m_Localized: "Tac\xF3n alto"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773008
+    m_Localized: Nuevo guardar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967168
+    m_Localized: Guardar carga
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967169
+    m_Localized: Nuevo juego
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967170
+    m_Localized: Crear juego personalizado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967171
+    m_Localized: Pausa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967172
+    m_Localized: Calidad de goop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967173
+    m_Localized: "Bombas de pez\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967174
+    m_Localized: Volumen de ambiente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967175
+    m_Localized: Rever
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967176
+    m_Localized: Ataque
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

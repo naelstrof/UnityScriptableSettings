@@ -1,0 +1,11 @@
+{
+    "name": "com.naelstrof.unityscriptablesettings",
+    "displayName": "Unity Scriptable Settings",
+    "version": "1.0.0",
+    "unity": "2020.3",
+    "dependencies": {
+        "com.unity.localization": "1.0.0-pre.10",
+        "com.unity.textmeshpro": "3.0.6"
+    },
+    "description": "A tool to help with creating, localizing, and subscribing to serializable user preferences."
+}

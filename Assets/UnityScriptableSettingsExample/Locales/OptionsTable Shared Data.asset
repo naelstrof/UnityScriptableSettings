@@ -1,0 +1,659 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: OptionsTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: OptionsTable
+  m_TableCollectionNameGuidString: 18ec60e56d612e2408ec4cbf19ca8104
+  m_Entries:
+  - m_Id: 879682441216
+    m_Key: PLAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879724384256
+    m_Key: OPTIONS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879728578560
+    m_Key: QUIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879728578561
+    m_Key: AUDIO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772864
+    m_Key: GRAPHICS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772865
+    m_Key: CONTROLS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772866
+    m_Key: ANALYTICS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772867
+    m_Key: UNPAUSE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772868
+    m_Key: BACK_BUTTON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772869
+    m_Key: MOUSE_SENSITIVITY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772870
+    m_Key: SETTING_LOW
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772871
+    m_Key: SETTING_HIGH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772872
+    m_Key: SETTING_MEDIUM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772873
+    m_Key: SETTING_OFF
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772874
+    m_Key: ANALYTIC_WARNING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772875
+    m_Key: PRIVACY_BUTTON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772876
+    m_Key: RESET_BUTTON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772877
+    m_Key: SAVE_BUTTON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772878
+    m_Key: LOAD_BUTTON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772879
+    m_Key: SETTING_DECAL_QUALITY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772880
+    m_Key: SETTING_WINDOW_MODE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772881
+    m_Key: SETTING_RESOLUTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772882
+    m_Key: SETTING_BLOOM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772883
+    m_Key: SETTING_MOTION_BLUR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772884
+    m_Key: SETTING_AMBIENT_OCCLUSION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772885
+    m_Key: SETTING_SHADOWS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772886
+    m_Key: SETTING_GRASS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772887
+    m_Key: SETTING_SSR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772888
+    m_Key: SETTING_AA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772889
+    m_Key: SETTING_FILM_GRAIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772890
+    m_Key: SETTING_MASTER_VOLUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772891
+    m_Key: SETTING_SOUND_EFFECTS_VOLUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772892
+    m_Key: SETTING_MUSIC_VOLUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772893
+    m_Key: SETTING_CAMERA_FOV
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772894
+    m_Key: SETTING_PANINI_PROJECTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772895
+    m_Key: SETTING_DEPTH_OF_FIELD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772896
+    m_Key: SETTING_CLOUDS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772897
+    m_Key: SETTING_OVERALL_QUALITY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772898
+    m_Key: SETTING_TOGGLE_WALK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772899
+    m_Key: SETTING_WINDOW_MODE_EXCLUSIVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772900
+    m_Key: SETTING_WINDOW_MODE_FULLSCREEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772901
+    m_Key: SETTING_WINDOW_MODE_MAXED_WINDOW
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772902
+    m_Key: SETTING_WINDOW_MODE_WINDOWED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772903
+    m_Key: SETTING_ON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772904
+    m_Key: SETTING_LANGUAGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772905
+    m_Key: SETTING_GAMEPLAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772906
+    m_Key: WARNING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772907
+    m_Key: LEGAL_JARGON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772908
+    m_Key: LEGAL_JARGON2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772909
+    m_Key: BUTTON_OKAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772910
+    m_Key: DEVELOPER_APOLOGY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772911
+    m_Key: CONTROLS_MOVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772912
+    m_Key: CONTROLS_JUMP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772913
+    m_Key: CONTROLS_WALK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772914
+    m_Key: CONTROLS_STUCK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772915
+    m_Key: CONTROLS_USE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772916
+    m_Key: CONTROLS_GRAB
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772917
+    m_Key: CONTROLS_PUSHPULL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772918
+    m_Key: CONTROLS_CROUCH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772919
+    m_Key: CONTROLS_STATS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772920
+    m_Key: CONTROLS_ROTATE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772921
+    m_Key: CONTROLS_UNFREEZE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772922
+    m_Key: CONTROLS_RAGDOLL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772923
+    m_Key: CONTROLS_GRABMODE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772924
+    m_Key: CONTROLS_LOOK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772925
+    m_Key: CONTROLS_ACTIVATEGRAB
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772926
+    m_Key: BUTTON_RESET
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772927
+    m_Key: LOADING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772928
+    m_Key: CLEAR_DEBRIS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772929
+    m_Key: UPGRADE_GRAB
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772930
+    m_Key: CONTROLS_SWITCHCAMERA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772931
+    m_Key: REAGENT_WATER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772932
+    m_Key: REAGENT_KOBOLD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772933
+    m_Key: REAGENT_ICE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772934
+    m_Key: REAGENT_MILK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772935
+    m_Key: REAGENT_MILKSHAKE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772936
+    m_Key: REAGENT_EGGPLANT_JUICE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772937
+    m_Key: REAGENT_MELON_JUICE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772938
+    m_Key: REAGENT_GROWTH_SERUM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772939
+    m_Key: REAGENT_INCOMPLETE_GROWTH_SERUM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772940
+    m_Key: REAGENT_UNSTABLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772941
+    m_Key: REAGENT_CUM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772942
+    m_Key: REAGENT_EGG
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772943
+    m_Key: REAGENT_FAT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772944
+    m_Key: REAGENT_LOVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772945
+    m_Key: NO_REAGENTS_FOUND
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772946
+    m_Key: REAGENT_SCANNER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772947
+    m_Key: REAGENT_EXPLOSION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772948
+    m_Key: REAGENT_POTASSIUM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772949
+    m_Key: MULTIPLAYER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772950
+    m_Key: MULTIPLAYER_QUICK_PLAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772951
+    m_Key: MULTIPLAYER_CREATE_PRIVATE_GAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772952
+    m_Key: SETTING_SEX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772953
+    m_Key: SETTING_HUE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772954
+    m_Key: SETTING_TOPBOTTOM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772955
+    m_Key: SETTING_THICKNESS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772956
+    m_Key: SETTING_BRIGHTNESS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772957
+    m_Key: SETTING_SATURATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772958
+    m_Key: SETTING_CONTRAST
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772959
+    m_Key: SETTING_DICK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772960
+    m_Key: SETTING_DICK_SIZE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772961
+    m_Key: SETTING_BOOB_SIZE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772962
+    m_Key: SETTING_DICK_EQUINE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772963
+    m_Key: SETTING_DICK_KNOTTED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772964
+    m_Key: SETTING_DICK_EQUINE_FLARED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772965
+    m_Key: SETTING_DICK_TAPERED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772966
+    m_Key: SETTING_NONE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772967
+    m_Key: SETTING_INOUT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772968
+    m_Key: REAGENT_WOOD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772969
+    m_Key: MULTIPLAYER_JOIN_PRIVATE_GAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772970
+    m_Key: MULTIPLAYER_NO_ROOMS_FOUND
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772971
+    m_Key: BUTTON_CANCEL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772972
+    m_Key: BUTTON_JOIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772973
+    m_Key: MULTIPLAYER_ROOM_NAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772974
+    m_Key: MULTIPLAYER_PRIVATE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772975
+    m_Key: MULTIPLAYER_MAX_PLAYERS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772976
+    m_Key: MULTIPLAYER_KOBOLD_SIZE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772977
+    m_Key: MULTIPLAYER_CREATE_PUBLIC_ROOM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772978
+    m_Key: CONTROLS_FIRSTPERSON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772979
+    m_Key: CONTROLS_THIRDPERSON
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772980
+    m_Key: CONTROLS_FREECAM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772981
+    m_Key: CONTROLS_STICKYFREECAM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772982
+    m_Key: SERVER_BROWSER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772983
+    m_Key: PLAYERS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772984
+    m_Key: CONNECTING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772985
+    m_Key: FINDING_RANDOM_ROOM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772986
+    m_Key: MULTIPLAYER_DISCONNECT_NOTIFICATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772987
+    m_Key: MULTIPLAYER_DISCONNECT_DESCRIPTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772988
+    m_Key: REAGENT_PINEAPPLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772989
+    m_Key: SETTING_CHUBBINESS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772990
+    m_Key: SETTING_BALLSIZE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772991
+    m_Key: SETTING_MIRROR_QUALITY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772992
+    m_Key: SETTING_HEMIPENIS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772993
+    m_Key: SETTING_VSYNC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772994
+    m_Key: SETTING_TARGET_FRAMERATE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772995
+    m_Key: EQUIPMENT_NIPPLE_BARBELLS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772996
+    m_Key: EQUIPMENT_HARDHAT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772997
+    m_Key: DESCRIPTION_EQUINE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772998
+    m_Key: DESCRIPTION_HARDHAT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772999
+    m_Key: DESCRIPTION_KNOTTED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773000
+    m_Key: DESCRIPTION_EQUINE_FLARED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773001
+    m_Key: DESCRIPTION_NIPPLE_BARBELLS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773002
+    m_Key: SPECIAL_NULL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773003
+    m_Key: DESCRIPTION_TAPERED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773004
+    m_Key: EQUIPMENT_KANDI_DICK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773005
+    m_Key: EQUIPMENT_TAIL_BAG
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773006
+    m_Key: EQUIPMENT_SPIKED_COLLAR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773007
+    m_Key: EQUIPMENT_HIGH_HEELS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773008
+    m_Key: MENU_NEW_SAVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967168
+    m_Key: MENU_SAVE_LOAD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967169
+    m_Key: MENU_NEW_GAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967170
+    m_Key: MULTIPLAYER_CREATE_CUSTOM_GAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967171
+    m_Key: PAUSE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967172
+    m_Key: SETTING_GOOP_QUALITY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967173
+    m_Key: EQUIPMENT_NIPPLE_PUMPS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967174
+    m_Key: SETTING_AMBIENCE_VOLUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967175
+    m_Key: RETRY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967176
+    m_Key: ATTACK
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1631062488446

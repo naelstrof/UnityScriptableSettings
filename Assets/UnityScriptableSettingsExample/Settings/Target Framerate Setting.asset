@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09f8a67db0d2bd34d9bd57997ebec0fe, type: 3}
+  m_Name: Target Framerate Setting
+  m_EditorClassIdentifier: 
+  localizedName:
+    m_TableReference:
+      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
+    m_TableEntryReference:
+      m_KeyId: 879732772994
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 1
+  group:
+    m_TableReference:
+      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
+    m_TableEntryReference:
+      m_KeyId: 879732772864
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 1
+  defaultValue: 20
+  minValue: 20
+  maxValue: 300
+  wholeNumbers: 1

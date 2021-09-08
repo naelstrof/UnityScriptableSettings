@@ -1,0 +1,675 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: OptionsTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 18ec60e56d612e2408ec4cbf19ca8104, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 879682441216
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879724384256
+    m_Localized: Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879728578560
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879728578561
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772864
+    m_Localized: Graphics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772865
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772866
+    m_Localized: Analytics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772867
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772868
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772869
+    m_Localized: Mouse Sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772870
+    m_Localized: Low
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772871
+    m_Localized: High
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772872
+    m_Localized: Medium
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772873
+    m_Localized: Off
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772874
+    m_Localized: ChastityLocksmith sends anonymous analytic data in order to make
+      the game better! If you want to prevent this, click on the button below (It
+      will open an internet browser).
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772875
+    m_Localized: Open Data Privacy Page
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772876
+    m_Localized: Reset to defaults
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772877
+    m_Localized: Save
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772878
+    m_Localized: Load
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772879
+    m_Localized: Decal Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772880
+    m_Localized: Window Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772881
+    m_Localized: Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772882
+    m_Localized: Bloom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772883
+    m_Localized: Motion Blur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772884
+    m_Localized: Ambient Occlusion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772885
+    m_Localized: Shadows
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772886
+    m_Localized: Grass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772887
+    m_Localized: Screen Space Reflections
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772888
+    m_Localized: Anti-Aliasing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772889
+    m_Localized: Film Grain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772890
+    m_Localized: Master Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772891
+    m_Localized: Sound Effects Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772892
+    m_Localized: Music Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772893
+    m_Localized: Camera FOV
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772894
+    m_Localized: Panini Projection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772895
+    m_Localized: Depth of Field
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772896
+    m_Localized: Clouds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772897
+    m_Localized: Overall Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772898
+    m_Localized: Toggle Walk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772899
+    m_Localized: Exclusive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772900
+    m_Localized: Fullscreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772901
+    m_Localized: Maxed Window
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772902
+    m_Localized: Windowed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772903
+    m_Localized: On
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772904
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772905
+    m_Localized: Gameplay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772906
+    m_Localized: WARNING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772907
+    m_Localized: 'THIS GAME DEPICTS FICTIONAL CHARACTERS PARTICIPATING IN <#FF0000>
+      SEXUALLY EXPLICIT BEHAVIOR <#FFFFFF>
+
+
+      BY CLICKING <#008CFF> PLAY <#FFFFFF>
+      YOU ARE STATING THAT:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772908
+    m_Localized: "\u2022 UNDER PENALTY OF PERJURY, YOU ARE OVER THE AGE OF 18 YEARS.\n\u2022
+      NUDITY AND EXPLICIT DEPICTIONS OF SEXUAL ACTIVITY DOES NOT OFFEND YOU.\n\u2022
+      YOU ACKNOWLEDGE THAT YOU ARE RESPONSIBLE FOR ENSURING ALL PERSONS VIEWING THE
+      GAME FROM YOUR DEVICE ARE OVER THE AGE OF 18 YEARS."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772909
+    m_Localized: Okay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772910
+    m_Localized: 'Welcome to ChastityLocksmith!
+
+
+      This is a developer build
+      and is completely unfinished, don''t expect much!
+
+
+      Thank you so much
+      for supporting the game!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772911
+    m_Localized: Move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772912
+    m_Localized: Jump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772913
+    m_Localized: Walk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772914
+    m_Localized: Gib
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772915
+    m_Localized: Use
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772916
+    m_Localized: Grab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772917
+    m_Localized: Grab Push and Pull
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772918
+    m_Localized: Crouch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772919
+    m_Localized: View Stats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772920
+    m_Localized: Rotate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772921
+    m_Localized: Unfreeze
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772922
+    m_Localized: Ragdoll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772923
+    m_Localized: Switch Grab Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772924
+    m_Localized: Look
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772925
+    m_Localized: Activate Grab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772926
+    m_Localized: Reset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772927
+    m_Localized: Loading...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772928
+    m_Localized: Clear Debris
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772929
+    m_Localized: Upgrade Grab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772930
+    m_Localized: Switch Camera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772931
+    m_Localized: Water
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772932
+    m_Localized: Kobold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772933
+    m_Localized: Ice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772934
+    m_Localized: Milk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772935
+    m_Localized: Milkshake
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772936
+    m_Localized: Eggplant Juice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772937
+    m_Localized: Melon Juice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772938
+    m_Localized: Growth Serum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772939
+    m_Localized: Incomplete Growth Serum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772940
+    m_Localized: Unstable Reagent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772941
+    m_Localized: Cum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772942
+    m_Localized: Egg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772943
+    m_Localized: Fat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772944
+    m_Localized: Love
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772945
+    m_Localized: No reageants found
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772946
+    m_Localized: Reagent Scanner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772947
+    m_Localized: Explosion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772948
+    m_Localized: Potassium
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772949
+    m_Localized: Multiplayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772950
+    m_Localized: Quick Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772951
+    m_Localized: Create private game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772952
+    m_Localized: Sex
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772953
+    m_Localized: Hue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772954
+    m_Localized: Top bottom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772955
+    m_Localized: Thickness
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772956
+    m_Localized: Brightness
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772957
+    m_Localized: Saturation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772958
+    m_Localized: Contrast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772959
+    m_Localized: Dick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772960
+    m_Localized: Dick Size
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772961
+    m_Localized: Boob Size
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772962
+    m_Localized: Equine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772963
+    m_Localized: Knotted
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772964
+    m_Localized: Flared Equine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772965
+    m_Localized: Tapered
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772966
+    m_Localized: None
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772967
+    m_Localized: In out
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772968
+    m_Localized: Wood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772969
+    m_Localized: Join private game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772970
+    m_Localized: No rooms found yet...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772971
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772972
+    m_Localized: Join
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772973
+    m_Localized: 'Room name:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772974
+    m_Localized: 'Private:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772975
+    m_Localized: Max Players
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772976
+    m_Localized: Kobold Size
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772977
+    m_Localized: Create public game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772978
+    m_Localized: Firstperson
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772979
+    m_Localized: Thirdperson
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772980
+    m_Localized: Freecam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772981
+    m_Localized: Sticky Freecam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772982
+    m_Localized: Server Browser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772983
+    m_Localized: Players
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772984
+    m_Localized: Connecting...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772985
+    m_Localized: Finding random room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772986
+    m_Localized: Left room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772987
+    m_Localized: Something made you lose connection!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772988
+    m_Localized: Pineapple Juice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772989
+    m_Localized: Chubbiness
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772990
+    m_Localized: Balls Size
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772991
+    m_Localized: Mirror Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772992
+    m_Localized: Hemipenis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772993
+    m_Localized: VSync
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772994
+    m_Localized: Target Framerate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772995
+    m_Localized: Nipple Barbells
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772996
+    m_Localized: Hardhat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772997
+    m_Localized: A magical attachable that's long and cylindrical with a medial ring.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772998
+    m_Localized: A simple hardhat to protect the head from falling debris.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732772999
+    m_Localized: A magical attachable with a knot, medial ring, and some bumpy ridges.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773000
+    m_Localized: A magical attachable that's long, cylindrical, and has a flared
+      up tip. Has some great telescoping action!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773001
+    m_Localized: Simple body-safe, hypoallergetic metal bars. (Yes they go in your
+      nipples.)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773002
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773003
+    m_Localized: A magical attachable that's long and thins out to a point. Its balls
+      are internalized!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773004
+    m_Localized: Kandi's Dick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773005
+    m_Localized: Tail bag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773006
+    m_Localized: Spiked collar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773007
+    m_Localized: High Heel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879732773008
+    m_Localized: New Save
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967168
+    m_Localized: Save / Load
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967169
+    m_Localized: New Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967170
+    m_Localized: Create custom game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967171
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967172
+    m_Localized: Goop Quality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967173
+    m_Localized: Nipple Pumps
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967174
+    m_Localized: Ambience Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967175
+    m_Localized: Retry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879736967176
+    m_Localized: Attack
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

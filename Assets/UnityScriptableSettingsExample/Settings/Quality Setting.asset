@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e5d430d288381647972ff8f041b1abc, type: 3}
+  m_Name: Quality Setting
+  m_EditorClassIdentifier: 
+  localizedName:
+    m_TableReference:
+      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
+    m_TableEntryReference:
+      m_KeyId: 879732772897
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 1
+  group:
+    m_TableReference:
+      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
+    m_TableEntryReference:
+      m_KeyId: 879732772864
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 1
+  defaultValue: 0
+  minValue: 0
+  maxValue: 2
+  wholeNumbers: 0
+  dropdownOptions:
+  - m_TableReference:
+      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
+    m_TableEntryReference:
+      m_KeyId: 879732772870
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  - m_TableReference:
+      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
+    m_TableEntryReference:
+      m_KeyId: 879732772872
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  - m_TableReference:
+      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
+    m_TableEntryReference:
+      m_KeyId: 879732772871
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
