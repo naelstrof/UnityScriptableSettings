@@ -19,6 +19,16 @@ public class AutoScrollToSelection : MonoBehaviour {
         if (obj == null || obj == lastSelectedObj) {
             return;
         }
+        bool IsChild = false;
+        for(Transform t = obj.transform;t!=null;t=t.parent) {
+            if (t==rect.content.transform) {
+                IsChild = true;
+                break;
+            }
+        }
+        if (!IsChild) {
+            return;
+        }
         lastSelectedObj = obj;
         RectTransform viewRect = rect.content.parent.GetComponent<RectTransform>();
 
