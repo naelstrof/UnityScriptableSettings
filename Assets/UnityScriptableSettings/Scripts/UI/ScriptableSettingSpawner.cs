@@ -10,7 +10,8 @@ using UnityEngine.UI;
 
 namespace UnityScriptableSettings {
 public class ScriptableSettingSpawner : MonoBehaviour {
-    public Selectable scrollBar;
+    public Selectable rightSelect;
+    public Selectable leftSelect;
     public GameObject slider;
     public GameObject dropdown;
     public GameObject groupTitle;
@@ -30,6 +31,7 @@ public class ScriptableSettingSpawner : MonoBehaviour {
     private int mod(int x, int m) { return (x%m + m)%m; }
     public IEnumerator WaitUntilReadyThenStart() {
         yield return LocalizationSettings.InitializationOperation;
+        yield return null;
         long currentGroupKey = 0;
         foreach(ScriptableSetting option in ScriptableSettingsManager.instance.settings) {
             if (!targetGroup.IsEmpty && option.group != targetGroup) {
@@ -56,7 +58,12 @@ public class ScriptableSettingSpawner : MonoBehaviour {
             nav.selectOnDown = GetSelectable(nextOption);
             nav.selectOnUp = GetSelectable(prevOption);
             if (!sliders.ContainsKey(option)) {
-                nav.selectOnRight = scrollBar;
+                if (rightSelect != null) {
+                    nav.selectOnRight = rightSelect;
+                }
+                if (leftSelect != null) {
+                    nav.selectOnLeft = leftSelect;
+                }
             }
             nav.mode = Navigation.Mode.Explicit;
             GetSelectable(option).navigation = nav;
