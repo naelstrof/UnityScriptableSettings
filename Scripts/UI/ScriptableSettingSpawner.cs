@@ -32,14 +32,14 @@ public class ScriptableSettingSpawner : MonoBehaviour {
     public IEnumerator WaitUntilReadyThenStart() {
         yield return LocalizationSettings.InitializationOperation;
         yield return null;
-        string currentGroupName = "";
+        long currentGroupID = -1;
         foreach(ScriptableSetting option in ScriptableSettingsManager.instance.settings) {
-            if (!targetGroup.IsEmpty && option.group.GetLocalizedString() != targetGroup.GetLocalizedString()) {
+            if (!targetGroup.IsEmpty && option.group.TableEntryReference.KeyId != targetGroup.TableEntryReference.KeyId) {
                 continue;
             }
-            if (currentGroupName != option.group.GetLocalizedString() || string.IsNullOrEmpty(currentGroupName)) {
+            if (currentGroupID != option.group.TableEntryReference.KeyId || currentGroupID == -1) {
                 CreateTitle(option.group);
-                currentGroupName = option.group.GetLocalizedString();
+                currentGroupID = option.group.TableEntryReference.KeyId;
             }
             if (option.GetType().IsSubclassOf(typeof(ScriptableSettingSlider))) {
                 CreateSlider(option);
