@@ -18,7 +18,7 @@ public class ScriptableSettingSpawner : MonoBehaviour {
     private Dictionary<ScriptableSetting,Slider> sliders = new Dictionary<ScriptableSetting, Slider>();
     private Dictionary<ScriptableSetting,TMP_Dropdown> dropdowns = new Dictionary<ScriptableSetting, TMP_Dropdown>();
     [SerializeField]
-    private LocalizedString targetGroup;
+    private ScriptableSettingGroup targetGroup;
     UnityEngine.UI.Selectable GetSelectable(ScriptableSetting option) {
         if (sliders.ContainsKey(option)) {
             return sliders[option];
@@ -32,16 +32,16 @@ public class ScriptableSettingSpawner : MonoBehaviour {
     public IEnumerator WaitUntilReadyThenStart() {
         yield return LocalizationSettings.InitializationOperation;
         yield return null;
-        long currentGroupID = -1;
+        ScriptableSettingGroup currentGroup = null;
         foreach(ScriptableSetting option in ScriptableSettingsManager.instance.settings) {
-            if (!targetGroup.IsEmpty && option.group.TableEntryReference.KeyId != targetGroup.TableEntryReference.KeyId) {
+            if (targetGroup != null && option.group != targetGroup) {
                 continue;
             }
-            if (currentGroupID != option.group.TableEntryReference.KeyId || currentGroupID == -1) {
-                CreateTitle(option.group);
-                currentGroupID = option.group.TableEntryReference.KeyId;
+            if (currentGroup != option.group || currentGroup == null) {
+                CreateTitle(option.group.localizedName);
+                currentGroup = option.group;
             }
-            if (option.GetType().IsSubclassOf(typeof(ScriptableSettingSlider))) {
+            if (option.GetType().IsSubclassOf(typeof(ScriptableSettingSlider)) || option is ScriptableSettingSlider) {
                 CreateSlider(option);
                 option.onValueChange += (o) => {sliders[o].SetValueWithoutNotify(o.value);};
                 continue;
@@ -135,11 +135,11 @@ public class ScriptableSettingSpawner : MonoBehaviour {
             }
         }
         List<TMP_Dropdown.OptionData> data = new List<TMP_Dropdown.OptionData>();
-        if (option.GetType().IsSubclassOf(typeof(ScriptableSettingLocalizedDropdown))) {
+        if (option.GetType().IsSubclassOf(typeof(ScriptableSettingLocalizedDropdown)) || option is ScriptableSettingLocalizedDropdown) {
             foreach(LocalizedString str in (option as ScriptableSettingLocalizedDropdown).dropdownOptions) {
                 data.Add(new TMP_Dropdown.OptionData(str.GetLocalizedString()));
             }
-        } else if (option.GetType().IsSubclassOf(typeof(ScriptableSettingDropdown))) {
+        } else if (option.GetType().IsSubclassOf(typeof(ScriptableSettingDropdown)) || option is ScriptableSettingDropdown) {
             foreach(string str in (option as ScriptableSettingDropdown).dropdownOptions) {
                 data.Add(new TMP_Dropdown.OptionData(str));
             }
@@ -163,7 +163,7 @@ public class ScriptableSettingSpawner : MonoBehaviour {
             yield return LocalizationSettings.InitializationOperation;
             foreach (ScriptableSetting option in ScriptableSettingsManager.instance.settings) {
                 if (dropdowns.ContainsKey(option)) {
-                    if (!option.GetType().IsSubclassOf(typeof(ScriptableSettingLocalizedDropdown))) {
+                    if (!option.GetType().IsSubclassOf(typeof(ScriptableSettingLocalizedDropdown)) || option is ScriptableSettingLocalizedDropdown) {
                         continue;
                     }
                     dropdowns[option].ClearOptions();
