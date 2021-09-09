@@ -47,14 +47,13 @@ public class ScriptableSettingEditor : Editor {
     }
 }
 #endif
-
 public class ScriptableSetting : ScriptableObject {
     public delegate void ScriptableSettingValueChange(ScriptableSetting option);
     public ScriptableSettingValueChange onValueChange;
     [Tooltip("Label of the option.")]
     public LocalizedString localizedName;
     [Tooltip("Name of the group that the setting belongs to (audio, graphics, gameplay...")]
-    public LocalizedString group;
+    public ScriptableSettingGroup group;
     protected float internalValue;
     public float GetValue() {
         return internalValue;

@@ -15,7 +15,7 @@ public class ScriptableSettingsManager : MonoBehaviour {
         }
     }
     public void Start() {
-        System.Array.Sort(settings, (a,b)=>{return a.group.TableEntryReference.ToString().CompareTo(b.group.TableEntryReference.ToString());});
+        System.Array.Sort(settings, (a,b)=>{return a.group.name.ToString().CompareTo(b.group.name.ToString());});
         foreach(var setting in settings) {
             setting.Load();
         }

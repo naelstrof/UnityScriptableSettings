@@ -20,14 +20,16 @@ MonoBehaviour:
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 1
-  group:
-    m_TableReference:
-      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
-    m_TableEntryReference:
-      m_KeyId: 879732772864
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 1
+  group: {fileID: 11400000, guid: aea03bad1729d324c8f90a71c2fc4ec9, type: 2}
+  OnSettingDisabled:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSettingEnabled:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSettingChanged:
+    m_PersistentCalls:
+      m_Calls: []
   defaultValue: 0
   minValue: 0
   maxValue: 3
