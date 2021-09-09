@@ -446,14 +446,7 @@ MonoBehaviour:
   slider: {fileID: 4599972096618288255, guid: 4164e6c49ea5bf340ad1947507dac1b7, type: 3}
   dropdown: {fileID: 1234408531855058166, guid: 39647efb3c120fb4eb89fe2aa77dc84d, type: 3}
   groupTitle: {fileID: 1234408531855058166, guid: b7f61b3a2e12de4448fccfd06520c7b0, type: 3}
-  targetGroup:
-    m_TableReference:
-      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
-    m_TableEntryReference:
-      m_KeyId: 879732772864
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 1
+  targetGroup: {fileID: 0}
 --- !u!114 &509967513
 MonoBehaviour:
   m_ObjectHideFlags: 0
