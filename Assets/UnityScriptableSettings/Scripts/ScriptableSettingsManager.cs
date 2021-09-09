@@ -14,6 +14,14 @@ public class ScriptableSettingsManager : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+    public ScriptableSetting GetSetting(string name) {
+        foreach(ScriptableSetting s in settings) {
+            if (s.name == name) {
+                return s;
+            }
+        }
+        return null;
+    }
     public void Start() {
         System.Array.Sort(settings, (a,b)=>{return a.group.name.ToString().CompareTo(b.group.name.ToString());});
         foreach(var setting in settings) {
