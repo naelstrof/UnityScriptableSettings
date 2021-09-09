@@ -10,8 +10,19 @@ using UnityEngine.UI;
 
 namespace UnityScriptableSettings {
 public class ScriptableSettingSpawner : MonoBehaviour {
+    public enum NavigationMode {
+        Auto,
+        Override
+    }
+    public NavigationMode navigationMode;
+    [Tooltip("If navigation mode is set to override, selecting right (while not on a slider) will select this object.")]
     public Selectable rightSelect;
+    [Tooltip("If navigation mode is set to override, selecting left (while not on a slider) will select this object.")]
     public Selectable leftSelect;
+    [Tooltip("If navigation mode is set to override, overflowing off the bottom of the list will select this object. Leaving it null will cause it to loop.")]
+    public Selectable downSelect;
+    [Tooltip("If navigation mode is set to override, overflowing off the top of the list will select this object. Leaving it null will cause it to loop.")]
+    public Selectable upSelect;
     public GameObject slider;
     public GameObject dropdown;
     public GameObject groupTitle;
@@ -49,24 +60,52 @@ public class ScriptableSettingSpawner : MonoBehaviour {
             CreateDropDown(option);
             option.onValueChange += (o) => {dropdowns[o].SetValueWithoutNotify(Mathf.FloorToInt(o.value));};
         }
-        // Set up the navigation.
-        for (int i=0;i<ScriptableSettingsManager.instance.settings.Length;i++) {
-            var option = ScriptableSettingsManager.instance.settings[i];
-            var nextOption = ScriptableSettingsManager.instance.settings[(i+1)%ScriptableSettingsManager.instance.settings.Length];
-            var prevOption = ScriptableSettingsManager.instance.settings[mod(i-1,ScriptableSettingsManager.instance.settings.Length)];
-            Navigation nav = GetSelectable(option).navigation;
-            nav.selectOnDown = GetSelectable(nextOption);
-            nav.selectOnUp = GetSelectable(prevOption);
-            if (!sliders.ContainsKey(option)) {
-                if (rightSelect != null) {
-                    nav.selectOnRight = rightSelect;
+        if (navigationMode == NavigationMode.Override) {
+            int startRange = -1;
+            int endRange = -1;
+            if (targetGroup != null) {
+                for(int i=0;i<ScriptableSettingsManager.instance.settings.Length;i++) {
+                    if (targetGroup == ScriptableSettingsManager.instance.settings[i] && startRange == -1) {
+                        startRange = i;
+                    }
+                    if (targetGroup != ScriptableSettingsManager.instance.settings[i] && startRange != -1 && endRange == -1) {
+                        endRange = i;
+                    }
                 }
-                if (leftSelect != null) {
-                    nav.selectOnLeft = leftSelect;
-                }
+            } else {
+                startRange = 0;
+                endRange = ScriptableSettingsManager.instance.settings.Length;
             }
-            nav.mode = Navigation.Mode.Explicit;
-            GetSelectable(option).navigation = nav;
+            int len = endRange-startRange;
+            // Set up the navigation.
+            for (int i=startRange;i<endRange;i++) {
+                var option = ScriptableSettingsManager.instance.settings[i];
+                int nextOptionIndex = ((i+1-startRange)%len)+startRange;
+                int prevOptionIndex = mod(i-1-startRange,len)+startRange;
+                var nextOption = ScriptableSettingsManager.instance.settings[nextOptionIndex];
+                var prevOption = ScriptableSettingsManager.instance.settings[prevOptionIndex];
+                Navigation nav = GetSelectable(option).navigation;
+                if (downSelect == null) {
+                    nav.selectOnDown = GetSelectable(nextOption);
+                } else {
+                    nav.selectOnDown = nextOptionIndex == startRange ? downSelect : GetSelectable(nextOption);
+                }
+                if (upSelect == null) {
+                    nav.selectOnUp = GetSelectable(prevOption);
+                } else {
+                    nav.selectOnUp = prevOptionIndex == endRange ? upSelect : GetSelectable(prevOption);
+                }
+                if (!sliders.ContainsKey(option)) {
+                    if (rightSelect != null) {
+                        nav.selectOnRight = rightSelect;
+                    }
+                    if (leftSelect != null) {
+                        nav.selectOnLeft = leftSelect;
+                    }
+                }
+                nav.mode = Navigation.Mode.Explicit;
+                GetSelectable(option).navigation = nav;
+            }
         }
         LocalizationSettings.SelectedLocaleChanged += StringChanged;
     }
