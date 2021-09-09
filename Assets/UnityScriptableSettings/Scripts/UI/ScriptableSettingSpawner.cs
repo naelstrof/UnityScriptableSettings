@@ -34,7 +34,7 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         yield return null;
         long currentGroupKey = 0;
         foreach(ScriptableSetting option in ScriptableSettingsManager.instance.settings) {
-            if (!targetGroup.IsEmpty && option.group != targetGroup) {
+            if (!targetGroup.IsEmpty && option.group.TableEntryReference.KeyId != targetGroup.TableEntryReference.KeyId) {
                 continue;
             }
             if (currentGroupKey != option.group.TableEntryReference.KeyId) {

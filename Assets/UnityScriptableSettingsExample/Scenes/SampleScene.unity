@@ -448,9 +448,9 @@ MonoBehaviour:
   groupTitle: {fileID: 1234408531855058166, guid: b7f61b3a2e12de4448fccfd06520c7b0, type: 3}
   targetGroup:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 879732772864
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 1
