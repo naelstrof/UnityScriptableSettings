@@ -22,10 +22,7 @@ public class ScriptableLanguageSetting : ScriptableSettingDropdown {
         base.SetValue(value);
     }
     public override void Save() {
-        Resolution r = Screen.currentResolution;
-        PlayerPrefs.SetInt ("Screenmanager Resolution Height", r.height);
-        PlayerPrefs.SetInt ("Screenmanager Resolution Width", r.width);
-        PlayerPrefs.SetInt ("Screenmanager Refresh Rate", r.refreshRate);
+        // We don't care to save... Unity already manages language loading and preferences.
     }
     public override void Load() {
         if (ScriptableSettingsManager.instance == null) {
