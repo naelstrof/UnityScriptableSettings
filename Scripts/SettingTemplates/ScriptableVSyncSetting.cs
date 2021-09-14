@@ -17,6 +17,7 @@ public class ScriptableVSyncSetting : ScriptableSettingLocalizedDropdown {
     public override void Load() {
         minValue = 0;
         maxValue = 4;
+        base.Load();
     }
 }
 

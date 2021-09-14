@@ -96,7 +96,7 @@ public class ScriptableSetting : ScriptableObject {
     }
     // We call load in GameManager, as some resources are generally not ready on Awake or OnEnable (like the graphics and localization for example.)
     public virtual void Load() {
-        internalValue = Mathf.Clamp(PlayerPrefs.GetFloat(name, defaultValue), minValue, maxValue);
+        SetValue(Mathf.Clamp(PlayerPrefs.GetFloat(name, defaultValue), minValue, maxValue));
     }
     public virtual void OnValidate() {
         defaultValue = Mathf.Clamp(defaultValue, minValue, maxValue);
