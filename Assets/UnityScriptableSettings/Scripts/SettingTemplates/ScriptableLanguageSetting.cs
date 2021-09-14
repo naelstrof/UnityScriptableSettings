@@ -44,7 +44,7 @@ public class ScriptableLanguageSetting : ScriptableSettingDropdown {
         for(int i=0;i<LocalizationSettings.AvailableLocales.Locales.Count;i++) {
             dropdownOptions[i] = LocalizationSettings.AvailableLocales.Locales[i].name;
         }
-        internalValue = defaultValue;
+        SetValue(defaultValue);
     }
 }
 
