@@ -34,6 +34,13 @@ public class ScriptableSettingsManager : MonoBehaviour {
         }
         PlayerPrefs.Save();
     }
+    public void ResetToDefault(ScriptableSettingGroup group) {
+        foreach(var setting in settings) {
+            if (setting.group == group) {
+                setting.SetValue(setting.defaultValue);
+            }
+        }
+    }
     void OnDestroy() {
         Save();
     }
