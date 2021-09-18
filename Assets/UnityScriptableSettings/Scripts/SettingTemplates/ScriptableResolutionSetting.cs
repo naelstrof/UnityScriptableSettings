@@ -43,7 +43,7 @@ public class ScriptableResolutionSetting : ScriptableSettingDropdown {
         int count = Screen.resolutions.Length;
         minValue = 0;
         maxValue = count-1;
-        defaultValue = 0;
+        defaultValue = maxValue;
         dropdownOptions = new string[count];
         for(int i=0;i<Screen.resolutions.Length;i++) {
             dropdownOptions[i] = Screen.resolutions[i].width + "x" + Screen.resolutions[i].height + "_" + Screen.resolutions[i].refreshRate;
