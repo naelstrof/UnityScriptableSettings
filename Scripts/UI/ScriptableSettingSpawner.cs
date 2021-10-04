@@ -202,7 +202,7 @@ public class ScriptableSettingSpawner : MonoBehaviour {
             yield return LocalizationSettings.InitializationOperation;
             foreach (ScriptableSetting option in ScriptableSettingsManager.instance.settings) {
                 if (dropdowns.ContainsKey(option)) {
-                    if (!option.GetType().IsSubclassOf(typeof(ScriptableSettingLocalizedDropdown)) || option is ScriptableSettingLocalizedDropdown) {
+                    if (!option.GetType().IsSubclassOf(typeof(ScriptableSettingLocalizedDropdown)) || !(option is ScriptableSettingLocalizedDropdown)) {
                         continue;
                     }
                     dropdowns[option].ClearOptions();
