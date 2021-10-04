@@ -36,9 +36,14 @@ public class ScriptableSettingsManager : MonoBehaviour {
     }
     public void ResetToDefault(ScriptableSettingGroup group) {
         foreach(var setting in settings) {
-            if (setting.group == group) {
+            if (setting.group == group || group == null) {
                 setting.SetValue(setting.defaultValue);
             }
+        }
+    }
+    public void ResetToDefault() {
+        foreach(var setting in settings) {
+            setting.SetValue(setting.defaultValue);
         }
     }
     void OnDestroy() {
