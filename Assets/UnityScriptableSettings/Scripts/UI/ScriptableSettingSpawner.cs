@@ -65,10 +65,10 @@ public class ScriptableSettingSpawner : MonoBehaviour {
             int endRange = -1;
             if (targetGroup != null) {
                 for(int i=0;i<ScriptableSettingsManager.instance.settings.Length;i++) {
-                    if (targetGroup == ScriptableSettingsManager.instance.settings[i] && startRange == -1) {
+                    if (targetGroup == ScriptableSettingsManager.instance.settings[i].group && startRange == -1) {
                         startRange = i;
                     }
-                    if (targetGroup != ScriptableSettingsManager.instance.settings[i] && startRange != -1 && endRange == -1) {
+                    if (targetGroup != ScriptableSettingsManager.instance.settings[i].group && startRange != -1 && endRange == -1) {
                         endRange = i;
                     }
                 }
