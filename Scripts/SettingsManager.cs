@@ -11,7 +11,7 @@ public class SettingsManager : MonoBehaviour {
     private List<Setting> settings;
 
     private ReadOnlyCollection<Setting> readOnlySettings;
-    public void Awake() {
+    private void Awake() {
         if (instance == null) {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -26,8 +26,8 @@ public class SettingsManager : MonoBehaviour {
         return instance.StartCoroutine(routine);
     }
 
-    public Setting GetSetting(string name) {
-        foreach(Setting s in settings) {
+    public static Setting GetSetting(string name) {
+        foreach(Setting s in instance.settings) {
             if (s.name == name) {
                 return s;
             }
@@ -39,32 +39,29 @@ public class SettingsManager : MonoBehaviour {
         return instance.readOnlySettings;
     }
 
-    public void Start() {
+    private void Start() {
         settings.Sort((a,b)=>String.Compare(a.group.name.ToString(), b.group.name.ToString(), StringComparison.Ordinal));
         foreach(var setting in settings) {
             setting.Load();
         }
     }
-    public void Save() {
-        foreach(var setting in settings) {
+    public static void Save() {
+        foreach(var setting in instance.settings) {
             setting.Save();
         }
         PlayerPrefs.Save();
     }
-    public void ResetToDefault(SettingGroup group) {
-        foreach(var setting in settings) {
+    public static void ResetToDefault(SettingGroup group) {
+        foreach(var setting in instance.settings) {
             if (setting.group == group || group == null) {
                 setting.ResetToDefault();
             }
         }
     }
-    public void ResetToDefault() {
-        foreach(var setting in settings) {
+    public static void ResetToDefault() {
+        foreach(var setting in instance.settings) {
             setting.ResetToDefault();
         }
-    }
-    void OnDestroy() {
-        Save();
     }
 }
 
