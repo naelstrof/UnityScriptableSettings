@@ -31,7 +31,7 @@ namespace UnityScriptableSettings {
         }
         public override void Load() {
             base.Load();
-            selectedValue = PlayerPrefs.GetInt(name, defaultValue);
+            SetValue(PlayerPrefs.GetInt(name, defaultValue));
             changed?.Invoke(selectedValue);
         }
     }
