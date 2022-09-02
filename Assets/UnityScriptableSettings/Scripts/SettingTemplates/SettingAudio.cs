@@ -9,7 +9,7 @@ using UnityEngine.Localization.Settings;
 namespace UnityScriptableSettings {
 
 [CreateAssetMenu(fileName = "New Audio Parameter", menuName = "Unity Scriptable Setting/Audio", order = 50)]
-public class SettingAudio : SettingFloat {
+public class SettingAudio : SettingFloatClamped {
     [SerializeField]
     private AudioMixer audioMixer;
     [SerializeField]
