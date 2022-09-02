@@ -1,11 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
 
 namespace UnityScriptableSettings {
-public class ScriptableSettingsManager : MonoBehaviour {
-    public static ScriptableSettingsManager instance;
-    public ScriptableSetting[] settings;
+public class SettingsManager : MonoBehaviour {
+    private static SettingsManager instance;
+    [SerializeField, SerializeReference]
+    private List<Setting> settings;
+
+    private ReadOnlyCollection<Setting> readOnlySettings;
     public void Awake() {
         if (instance == null) {
             instance = this;
@@ -13,17 +18,29 @@ public class ScriptableSettingsManager : MonoBehaviour {
         } else {
             Destroy(gameObject);
         }
+
+        readOnlySettings = settings.AsReadOnly();
     }
-    public ScriptableSetting GetSetting(string name) {
-        foreach(ScriptableSetting s in settings) {
+
+    public static Coroutine StaticStartCoroutine(IEnumerator routine) {
+        return instance.StartCoroutine(routine);
+    }
+
+    public Setting GetSetting(string name) {
+        foreach(Setting s in settings) {
             if (s.name == name) {
                 return s;
             }
         }
         return null;
     }
+
+    public static ReadOnlyCollection<Setting> GetSettings() {
+        return instance.readOnlySettings;
+    }
+
     public void Start() {
-        System.Array.Sort(settings, (a,b)=>{return a.group.name.ToString().CompareTo(b.group.name.ToString());});
+        settings.Sort((a,b)=>String.Compare(a.group.name.ToString(), b.group.name.ToString(), StringComparison.Ordinal));
         foreach(var setting in settings) {
             setting.Load();
         }
@@ -34,16 +51,16 @@ public class ScriptableSettingsManager : MonoBehaviour {
         }
         PlayerPrefs.Save();
     }
-    public void ResetToDefault(ScriptableSettingGroup group) {
+    public void ResetToDefault(SettingGroup group) {
         foreach(var setting in settings) {
             if (setting.group == group || group == null) {
-                setting.SetValue(setting.defaultValue);
+                setting.ResetToDefault();
             }
         }
     }
     public void ResetToDefault() {
         foreach(var setting in settings) {
-            setting.SetValue(setting.defaultValue);
+            setting.ResetToDefault();
         }
     }
     void OnDestroy() {

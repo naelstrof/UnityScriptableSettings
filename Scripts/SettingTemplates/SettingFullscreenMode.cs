@@ -5,11 +5,10 @@ using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 
 namespace UnityScriptableSettings {
-
-[CreateAssetMenu(fileName = "Fullscreen Mode Setting", menuName = "Unity Scriptable Setting/Specific/Fullscreen Mode Setting", order = 1)]
-public class ScriptableFullscreenModeSetting : ScriptableSettingLocalizedDropdown {
-    public override void SetValue(float value) {
-        switch(Mathf.FloorToInt(value)) {
+[CreateAssetMenu(fileName = "New Fullscreen Mode", menuName = "Unity Scriptable Setting/Fullscreen Mode", order = 52)]
+public class SettingFullscreenMode : SettingLocalizedDropdown {
+    public override void SetValue(int value) {
+        switch(value) {
             case 0: Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen; break;
             case 1: Screen.fullScreenMode = FullScreenMode.FullScreenWindow; break;
             case 2: Screen.fullScreenMode = FullScreenMode.MaximizedWindow; break;
@@ -21,10 +20,7 @@ public class ScriptableFullscreenModeSetting : ScriptableSettingLocalizedDropdow
         PlayerPrefs.SetInt("Screenmanager Fullscreen mode", (int)Screen.fullScreenMode);
     }
     public override void Load() {
-        minValue = 0;
-        maxValue = 3;
         SetValue(PlayerPrefs.GetInt("Screenmanager Fullscreen mode", (int)Screen.fullScreenMode));
     }
 }
-
 }
