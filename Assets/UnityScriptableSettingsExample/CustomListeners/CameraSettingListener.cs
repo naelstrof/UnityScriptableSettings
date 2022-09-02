@@ -5,30 +5,29 @@ using UnityEngine.Rendering.Universal;
 
 namespace UnityScriptableSettings {
 public class CameraUserOptionLoader : MonoBehaviour {
-    public ScriptableSetting antiAliasing;
+    public SettingInt antiAliasing;
     private UniversalAdditionalCameraData camData;
     private Camera cam;
     // Start is called before the first frame update
-    void Start() {
-        antiAliasing.onValueChange -= OnValueChanged;
-        antiAliasing.onValueChange += OnValueChanged;
-        OnValueChanged(antiAliasing);
+    void Awake() {
         cam = GetComponent<Camera>();
         camData = GetComponent<UniversalAdditionalCameraData>();
     }
     void OnEnable() {
-        Start();
+        antiAliasing.changed -= OnValueChanged;
+        antiAliasing.changed += OnValueChanged;
+        OnValueChanged(antiAliasing.GetValue());
     }
     void OnDisable() {
-        antiAliasing.onValueChange -= OnValueChanged;
+        antiAliasing.changed -= OnValueChanged;
     }
-    void OnValueChanged(ScriptableSetting setting) {
+    void OnValueChanged(int value) {
         if (cam == null) {
             return;
         }
-        cam.allowMSAA = (setting.value != 0f);
-        camData.antialiasing = setting.value == 0 ? AntialiasingMode.None : AntialiasingMode.SubpixelMorphologicalAntiAliasing;
-        switch(Mathf.FloorToInt(setting.value)-1) {
+        cam.allowMSAA = (value != 0f);
+        camData.antialiasing = value == 0 ? AntialiasingMode.None : AntialiasingMode.SubpixelMorphologicalAntiAliasing;
+        switch(value-1) {
             case 0: camData.antialiasingQuality = AntialiasingQuality.Low; break;
             case 1: camData.antialiasingQuality = AntialiasingQuality.Medium; break;
             case 2: camData.antialiasingQuality = AntialiasingQuality.High; break;

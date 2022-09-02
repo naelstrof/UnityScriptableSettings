@@ -25,17 +25,22 @@ public class ScriptableSettingSpawner : MonoBehaviour {
     public Selectable upSelect;
     public GameObject slider;
     public GameObject dropdown;
+    public GameObject textInput;
     public GameObject groupTitle;
-    private Dictionary<ScriptableSetting,Slider> sliders = new Dictionary<ScriptableSetting, Slider>();
-    private Dictionary<ScriptableSetting,TMP_Dropdown> dropdowns = new Dictionary<ScriptableSetting, TMP_Dropdown>();
+    private Dictionary<Setting,Slider> sliders = new Dictionary<Setting, Slider>();
+    private Dictionary<Setting,TMP_Dropdown> dropdowns = new Dictionary<Setting, TMP_Dropdown>();
+    private Dictionary<Setting,TMP_InputField> textInputs = new Dictionary<Setting, TMP_InputField>();
     [SerializeField]
-    private ScriptableSettingGroup targetGroup;
-    UnityEngine.UI.Selectable GetSelectable(ScriptableSetting option) {
+    private SettingGroup targetGroup;
+    UnityEngine.UI.Selectable GetSelectable(Setting option) {
         if (sliders.ContainsKey(option)) {
             return sliders[option];
         }
         if (dropdowns.ContainsKey(option)) {
             return dropdowns[option];
+        }
+        if (textInputs.ContainsKey(option)) {
+            return textInputs[option];
         }
         return null;
     }
@@ -43,8 +48,8 @@ public class ScriptableSettingSpawner : MonoBehaviour {
     public IEnumerator WaitUntilReadyThenStart() {
         yield return LocalizationSettings.InitializationOperation;
         yield return null;
-        ScriptableSettingGroup currentGroup = null;
-        foreach(ScriptableSetting option in ScriptableSettingsManager.instance.settings) {
+        SettingGroup currentGroup = null;
+        foreach(Setting option in SettingsManager.GetSettings()) {
             if (targetGroup != null && option.group != targetGroup) {
                 continue;
             }
@@ -52,38 +57,71 @@ public class ScriptableSettingSpawner : MonoBehaviour {
                 CreateTitle(option.group.localizedName);
                 currentGroup = option.group;
             }
-            if (option.GetType().IsSubclassOf(typeof(ScriptableSettingSlider)) || option is ScriptableSettingSlider) {
-                CreateSlider(option);
-                option.onValueChange += (o) => {sliders[o].SetValueWithoutNotify(o.value);};
+
+            if (option is SettingDropdown dropdown) {
+                CreateDropDown(dropdown);
+                dropdown.changed += (o) => { dropdowns[option].SetValueWithoutNotify(o); };
                 continue;
             }
-            CreateDropDown(option);
-            option.onValueChange += (o) => {dropdowns[o].SetValueWithoutNotify(Mathf.FloorToInt(o.value));};
+
+            if (option is SettingLocalizedDropdown localizedDropdown) {
+                CreateDropDown(localizedDropdown);
+                localizedDropdown.changed += (o) => { dropdowns[option].SetValueWithoutNotify(o); };
+                continue;
+            }
+
+            if (option is SettingFloatClamped floatSlider) {
+                CreateSlider(option);
+                floatSlider.changed += (o) => {sliders[option].SetValueWithoutNotify(o);};
+                continue;
+            }
+            
+            if (option is SettingIntClamped intSlider) {
+                CreateSlider(option);
+                intSlider.changed += (o) => {sliders[option].SetValueWithoutNotify(o);};
+                continue;
+            }
+
+            if (option is SettingInt justInt) {
+                CreateStringInput(justInt);
+                justInt.changed += (o) => { textInputs[option].SetTextWithoutNotify(o.ToString()); };
+                continue;
+            }
+            if (option is SettingFloat justFloat) {
+                CreateStringInput(justFloat);
+                justFloat.changed += (o) => { textInputs[option].SetTextWithoutNotify(o.ToString()); };
+                continue;
+            }
+            if (option is SettingString justString) {
+                CreateStringInput(justString);
+                justString.changed += (o) => { textInputs[option].SetTextWithoutNotify(o); };
+                continue;
+            }
         }
         if (navigationMode == NavigationMode.Override) {
             int startRange = -1;
             int endRange = -1;
             if (targetGroup != null) {
-                for(int i=0;i<ScriptableSettingsManager.instance.settings.Length;i++) {
-                    if (targetGroup == ScriptableSettingsManager.instance.settings[i].group && startRange == -1) {
+                for(int i=0;i<SettingsManager.GetSettings().Count;i++) {
+                    if (targetGroup == SettingsManager.GetSettings()[i].group && startRange == -1) {
                         startRange = i;
                     }
-                    if (targetGroup != ScriptableSettingsManager.instance.settings[i].group && startRange != -1 && endRange == -1) {
+                    if (targetGroup != SettingsManager.GetSettings()[i].group && startRange != -1 && endRange == -1) {
                         endRange = i;
                     }
                 }
             } else {
                 startRange = 0;
-                endRange = ScriptableSettingsManager.instance.settings.Length;
+                endRange = SettingsManager.GetSettings().Count;
             }
             int len = endRange-startRange;
             // Set up the navigation.
             for (int i=startRange;i<endRange;i++) {
-                var option = ScriptableSettingsManager.instance.settings[i];
+                var option = SettingsManager.GetSettings()[i];
                 int nextOptionIndex = ((i+1-startRange)%len)+startRange;
                 int prevOptionIndex = mod(i-1-startRange,len)+startRange;
-                var nextOption = ScriptableSettingsManager.instance.settings[nextOptionIndex];
-                var prevOption = ScriptableSettingsManager.instance.settings[prevOptionIndex];
+                var nextOption = SettingsManager.GetSettings()[nextOptionIndex];
+                var prevOption = SettingsManager.GetSettings()[prevOptionIndex];
                 Navigation nav = GetSelectable(option).navigation;
                 if (downSelect == null) {
                     nav.selectOnDown = GetSelectable(nextOption);
@@ -117,7 +155,7 @@ public class ScriptableSettingSpawner : MonoBehaviour {
     }
     public IEnumerator WaitAndThenSelect() {
         yield return null;
-        ScriptableSetting topOption = ScriptableSettingsManager.instance.settings[0];
+        Setting topOption = SettingsManager.GetSettings()[0];
         if (sliders.ContainsKey(topOption)) {
             //GetComponentInParent<EventSystem>()?.SetSelectedGameObject(sliders[topOption].gameObject);
             sliders[topOption].Select();
@@ -138,7 +176,7 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         }
         title.GetComponentInChildren<LocalizeStringEvent>().StringReference = group;
     }
-    public void CreateSlider(ScriptableSetting option) {
+    public void CreateSlider(Setting option) {
         GameObject s = GameObject.Instantiate(slider, Vector3.zero, Quaternion.identity);
         s.transform.SetParent(this.transform);
         s.transform.localScale = Vector3.one;
@@ -147,22 +185,92 @@ public class ScriptableSettingSpawner : MonoBehaviour {
                 t.text = option.localizedName.GetLocalizedString();
                 t.GetComponent<LocalizeStringEvent>().StringReference = option.localizedName;
             }
-            if (t.name == "Min") {
-                t.text = option.minValue.ToString();
-            }
-            if (t.name == "Max") {
-                t.text = option.maxValue.ToString();
+            if (option is SettingIntClamped intClamped) {
+                if (t.name == "Min") {
+                    t.text = intClamped.GetMin().ToString();
+                } else if (t.name == "Max") {
+                    t.text = intClamped.GetMax().ToString();
+                }
+            } else if (option is SettingFloatClamped floatClamped) {
+                if (t.name == "Min") {
+                    t.text = floatClamped.GetMin().ToString();
+                } else if (t.name == "Max") {
+                    t.text = floatClamped.GetMax().ToString();
+                }
             }
         }
         Slider slid = s.GetComponentInChildren<Slider>();
-        slid.minValue = option.minValue;
-        slid.maxValue = option.maxValue;
-        slid.SetValueWithoutNotify(option.value);
-        slid.wholeNumbers = (option as ScriptableSettingSlider).wholeNumbers;
-        slid.onValueChanged.AddListener((newValue)=>{option.SetValue(newValue); });
+        if (option is SettingIntClamped intClampedA) {
+            slid.minValue = intClampedA.GetMin();
+            slid.maxValue = intClampedA.GetMax();
+            slid.SetValueWithoutNotify(intClampedA.GetValue());
+            slid.wholeNumbers = true;
+            slid.onValueChanged.AddListener((newValue)=>{intClampedA.SetValue(Mathf.RoundToInt(newValue)); });
+        } else if (option is SettingFloatClamped floatClampedA) {
+            slid.minValue = floatClampedA.GetMin();
+            slid.maxValue = floatClampedA.GetMax();
+            slid.SetValueWithoutNotify(floatClampedA.GetValue());
+            slid.wholeNumbers = false;
+            slid.onValueChanged.AddListener(floatClampedA.SetValue);
+        }
         sliders.Add(option, slid);
     }
-    public void CreateDropDown(ScriptableSetting option) {
+    public void CreateStringInput(Setting option) {
+        GameObject d = GameObject.Instantiate(textInput, Vector3.zero, Quaternion.identity);
+        d.transform.SetParent(this.transform);
+        d.transform.localScale = Vector3.one;
+        foreach( TMP_Text t in d.GetComponentsInChildren<TMP_Text>()) {
+            if (t.name == "Label") {
+                //t.text = o.type.ToString();
+                t.text = option.localizedName.GetLocalizedString();
+                t.GetComponent<LocalizeStringEvent>().StringReference = option.localizedName;
+            }
+        }
+        TMP_InputField inputField = d.GetComponentInChildren<TMP_InputField>();
+        if (option is SettingInt intSetting) {
+            inputField.SetTextWithoutNotify(intSetting.GetValue().ToString());
+            inputField.onSubmit.AddListener( (s) => {
+                if (int.TryParse(s, out int v)) {
+                    intSetting.SetValue(v);
+                } else {
+                    inputField.SetTextWithoutNotify(intSetting.GetValue().ToString());
+                }
+            });
+            inputField.onDeselect.AddListener((s) => {
+                if (int.TryParse(s, out int v)) {
+                    intSetting.SetValue(v);
+                } else {
+                    inputField.SetTextWithoutNotify(intSetting.GetValue().ToString());
+                }
+            });
+        } else if (option is SettingFloat floatSetting) {
+            inputField.SetTextWithoutNotify(floatSetting.GetValue().ToString());
+            inputField.onSubmit.AddListener((s) => {
+                if (float.TryParse(s, out float v)) {
+                    floatSetting.SetValue(v);
+                } else {
+                    inputField.SetTextWithoutNotify(floatSetting.GetValue().ToString());
+                }
+            });
+            inputField.onDeselect.AddListener((s) => {
+                if (float.TryParse(s, out float v)) {
+                    floatSetting.SetValue(v);
+                } else {
+                    inputField.SetTextWithoutNotify(floatSetting.GetValue().ToString());
+                }
+            });
+        } else if (option is SettingString settingString) {
+            inputField.SetTextWithoutNotify(settingString.GetValue());
+            inputField.onSubmit.AddListener((s) => {
+                settingString.SetValue(s);
+            });
+            inputField.onDeselect.AddListener((s) => {
+                settingString.SetValue(s);
+            });
+        }
+        textInputs.Add(option, inputField);
+    }
+    public void CreateDropDown(SettingInt option) {
         GameObject d = GameObject.Instantiate(dropdown, Vector3.zero, Quaternion.identity);
         d.transform.SetParent(this.transform);
         d.transform.localScale = Vector3.one;
@@ -174,25 +282,25 @@ public class ScriptableSettingSpawner : MonoBehaviour {
             }
         }
         List<TMP_Dropdown.OptionData> data = new List<TMP_Dropdown.OptionData>();
-        if (option.GetType().IsSubclassOf(typeof(ScriptableSettingLocalizedDropdown)) || option is ScriptableSettingLocalizedDropdown) {
-            foreach(LocalizedString str in (option as ScriptableSettingLocalizedDropdown).dropdownOptions) {
+        if (option.GetType().IsSubclassOf(typeof(SettingLocalizedDropdown)) || option is SettingLocalizedDropdown) {
+            foreach(LocalizedString str in ((SettingLocalizedDropdown)option).GetLocalizedDropdowns()) {
                 data.Add(new TMP_Dropdown.OptionData(str.GetLocalizedString()));
             }
-        } else if (option.GetType().IsSubclassOf(typeof(ScriptableSettingDropdown)) || option is ScriptableSettingDropdown) {
-            foreach(string str in (option as ScriptableSettingDropdown).dropdownOptions) {
+        } else if (option.GetType().IsSubclassOf(typeof(SettingDropdown)) || option is SettingDropdown) {
+            foreach(string str in ((SettingDropdown)option).GetDropdownOptions()) {
                 data.Add(new TMP_Dropdown.OptionData(str));
             }
         }
         TMP_Dropdown drop = d.GetComponentInChildren<TMP_Dropdown>();
         drop.options = data;
-        drop.value = Mathf.RoundToInt(option.value);
-        drop.SetValueWithoutNotify(Mathf.RoundToInt(option.value));
-        drop.onValueChanged.AddListener((newValue) => {option.SetValue(newValue);});
+        drop.value = Mathf.RoundToInt(option.GetValue());
+        drop.SetValueWithoutNotify(option.GetValue());
+        drop.onValueChanged.AddListener(option.SetValue);
         dropdowns.Add(option, drop);
     }
     private void StringChanged(Locale locale) {
         StopAllCoroutines();
-        ScriptableSettingsManager.instance.StartCoroutine(ChangeStrings());
+        SettingsManager.StaticStartCoroutine(ChangeStrings());
     }
     IEnumerator ChangeStrings() {
         var otherAsync = LocalizationSettings.SelectedLocaleAsync;
@@ -200,21 +308,21 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         yield return new WaitForSecondsRealtime(0.1f);
         if (otherAsync.Result != null){
             yield return LocalizationSettings.InitializationOperation;
-            foreach (ScriptableSetting option in ScriptableSettingsManager.instance.settings) {
+            foreach (Setting option in SettingsManager.GetSettings()) {
                 if (dropdowns.ContainsKey(option)) {
-                    if (!option.GetType().IsSubclassOf(typeof(ScriptableSettingLocalizedDropdown)) && !(option is ScriptableSettingLocalizedDropdown)) {
+                    if (!option.GetType().IsSubclassOf(typeof(SettingLocalizedDropdown)) && !(option is SettingLocalizedDropdown)) {
                         continue;
                     }
                     dropdowns[option].ClearOptions();
-                    for(int i=0;i<(option as ScriptableSettingLocalizedDropdown).dropdownOptions.Length;i++) {
+                    for(int i=0;i<((SettingLocalizedDropdown)option).GetLocalizedDropdowns().Length;i++) {
                         while (dropdowns[option].options.Count <= i) {
-                            dropdowns[option].options.Add(new TMP_Dropdown.OptionData((option as ScriptableSettingLocalizedDropdown).dropdownOptions[i].GetLocalizedString()));
+                            dropdowns[option].options.Add(new TMP_Dropdown.OptionData((option as SettingLocalizedDropdown).GetLocalizedDropdowns()[i].GetLocalizedString()));
                         }
-                        dropdowns[option].options[i].text = (option as ScriptableSettingLocalizedDropdown).dropdownOptions[i].GetLocalizedString();
+                        dropdowns[option].options[i].text = (option as SettingLocalizedDropdown).GetLocalizedDropdowns()[i].GetLocalizedString();
                     }
                     dropdowns[option].SetValueWithoutNotify(1);
                     dropdowns[option].SetValueWithoutNotify(0);
-                    dropdowns[option].SetValueWithoutNotify(Mathf.FloorToInt(option.value));
+                    dropdowns[option].SetValueWithoutNotify((option as SettingInt).GetValue());
                 }
             }
         }

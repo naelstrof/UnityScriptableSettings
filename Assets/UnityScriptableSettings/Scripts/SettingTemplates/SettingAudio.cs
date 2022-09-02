@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,11 +8,14 @@ using UnityEngine.Localization.Settings;
 
 namespace UnityScriptableSettings {
 
-[CreateAssetMenu(fileName = "New Audio Setting", menuName = "Unity Scriptable Setting/Specific/Audio Exposed Parameter Setting", order = 1)]
-public class ScriptableAudioSetting : ScriptableSettingSlider {
-    public AudioMixer audioMixer;
-    public string audioExposedParamName;
-    public bool isVolumeParameter = true;
+[CreateAssetMenu(fileName = "New Audio Parameter", menuName = "Unity Scriptable Setting/Audio", order = 50)]
+public class SettingAudio : SettingFloat {
+    [SerializeField]
+    private AudioMixer audioMixer;
+    [SerializeField]
+    private string audioExposedParamName;
+    [SerializeField]
+    private bool isVolumeParameter = true;
     public override void SetValue(float value) {
         if (isVolumeParameter) {
             audioMixer.SetFloat(audioExposedParamName, Mathf.Log(Mathf.Max(value,0.01f))*20f);

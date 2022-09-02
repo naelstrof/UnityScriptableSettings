@@ -9,22 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09f8a67db0d2bd34d9bd57997ebec0fe, type: 3}
-  m_Name: Target Framerate Setting
+  m_Script: {fileID: 11500000, guid: e28d0602a470445684901b4c980cf774, type: 3}
+  m_Name: SomeInteger
   m_EditorClassIdentifier: 
   localizedName:
     m_TableReference:
       m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
     m_TableEntryReference:
-      m_KeyId: 879732772994
+      m_KeyId: 879732772913
       m_Key: 
     m_FallbackState: 0
-    m_WaitForCompletion: 1
+    m_WaitForCompletion: 0
     m_LocalVariables: []
-  group: {fileID: 11400000, guid: aea03bad1729d324c8f90a71c2fc4ec9, type: 2}
-  defaultValue: 300
-  min: 30
-  max: 300
+  group: {fileID: 11400000, guid: 3ef0434aaf06c2b41ab484cd93250edc, type: 2}
+  defaultValue: 1
   references:
     version: 2
     RefIds: []

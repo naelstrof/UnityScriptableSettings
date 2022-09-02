@@ -5,12 +5,10 @@ using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 
 namespace UnityScriptableSettings {
-
-[CreateAssetMenu(fileName = "Resolution Setting", menuName = "Unity Scriptable Setting/Specific/Resolution Setting", order = 1)]
-[OverrideDropdown]
-[OverrideDefaultValue]
-public class ScriptableResolutionSetting : ScriptableSettingDropdown {
-    public override void SetValue(float value) {
+    
+[CreateAssetMenu(fileName = "New Resolution", menuName = "Unity Scriptable Setting/Resolution", order = 55)]
+public class SettingResolution : SettingDropdown {
+    public override void SetValue(int value) {
         Resolution r = Screen.resolutions[Mathf.RoundToInt(value)];
         if (Screen.currentResolution.width != r.width || Screen.currentResolution.height != r.height || Screen.currentResolution.refreshRate != r.refreshRate) {
             Screen.SetResolution(r.width, r.height, Screen.fullScreenMode, r.refreshRate);
@@ -27,28 +25,17 @@ public class ScriptableResolutionSetting : ScriptableSettingDropdown {
         int height = PlayerPrefs.GetInt ("Screenmanager Resolution Height", Screen.resolutions[0].height);
         int width = PlayerPrefs.GetInt ("Screenmanager Resolution Width", Screen.resolutions[0].width);
         int refreshRate = PlayerPrefs.GetInt ("Screenmanager Refresh Rate", Screen.resolutions[0].refreshRate);
-        bool foundResolution = false;
         for(int i=0;i<Screen.resolutions.Length;i++) {
             if (Screen.resolutions[i].width == width && Screen.resolutions[i].height == height && Screen.resolutions[i].refreshRate == refreshRate) {
-                SetValue(i);
-                foundResolution = true;
+                selectedValue = i;
                 break;
             }
         }
-
-        if (!foundResolution) {
-            Screen.SetResolution(width, height, Screen.fullScreenMode, refreshRate);
-        }
-
         int count = Screen.resolutions.Length;
-        minValue = 0;
-        maxValue = count-1;
-        defaultValue = maxValue;
         dropdownOptions = new string[count];
-        for(int i=0;i<Screen.resolutions.Length;i++) {
+        for(int i=0;i<count;i++) {
             dropdownOptions[i] = Screen.resolutions[i].width + "x" + Screen.resolutions[i].height + "_" + Screen.resolutions[i].refreshRate;
         }
-        return;
     }
 }
 
