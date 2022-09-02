@@ -28,12 +28,11 @@ namespace UnityScriptableSettings {
 
         public override void Save() {
             base.Save();
-            PlayerPrefs.SetString(selectedValue, GetValue());
+            PlayerPrefs.SetString(name, GetValue());
         }
         public override void Load() {
             base.Load();
             SetValue(PlayerPrefs.GetString(name, defaultValue));
-            changed?.Invoke(selectedValue);
         }
     }
 }
