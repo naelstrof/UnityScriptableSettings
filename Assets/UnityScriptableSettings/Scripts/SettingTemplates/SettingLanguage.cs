@@ -14,6 +14,7 @@ public class SettingLanguage : SettingDropdown {
     private IEnumerator ChangeLanguage(int value) {
         yield return LocalizationSettings.InitializationOperation;
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[value];
+        Debug.Log($"Language set to {LocalizationSettings.SelectedLocale.name}.");
         base.SetValue(value);
     }
     public override void Load() {
@@ -21,17 +22,16 @@ public class SettingLanguage : SettingDropdown {
     }
     private IEnumerator OverrideDropdownWithLanguages() {
         yield return LocalizationSettings.InitializationOperation;
-        for(int i=0;i<LocalizationSettings.AvailableLocales.Locales.Count;i++) {
-            if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[i]) {
-                defaultValue = i;
-                break;
-            }
+        for (int i = 0; i < LocalizationSettings.AvailableLocales.Locales.Count; i++) {
+            if (LocalizationSettings.SelectedLocale.name != LocalizationSettings.AvailableLocales.Locales[i].name) continue;
+            defaultValue = i;
+            Debug.Log($"Detected {LocalizationSettings.SelectedLocale.name} as default Locale.");
+            break;
         }
         dropdownOptions = new string[LocalizationSettings.AvailableLocales.Locales.Count];
         for(int i=0;i<LocalizationSettings.AvailableLocales.Locales.Count;i++) {
             dropdownOptions[i] = LocalizationSettings.AvailableLocales.Locales[i].name;
         }
-
         base.Load();
     }
 }
