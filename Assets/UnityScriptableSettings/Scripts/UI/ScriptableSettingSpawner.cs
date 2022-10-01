@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -27,12 +28,14 @@ public class ScriptableSettingSpawner : MonoBehaviour {
     public GameObject dropdown;
     public GameObject textInput;
     public GameObject groupTitle;
+    public List<GameObject> titles = new List<GameObject>();
     private Dictionary<Setting,Slider> sliders = new Dictionary<Setting, Slider>();
     private Dictionary<Setting,TMP_Dropdown> dropdowns = new Dictionary<Setting, TMP_Dropdown>();
     private Dictionary<Setting,TMP_InputField> textInputs = new Dictionary<Setting, TMP_InputField>();
+    private bool ready;
     [SerializeField]
     private SettingGroup targetGroup;
-    UnityEngine.UI.Selectable GetSelectable(Setting option) {
+    Selectable GetSelectable(Setting option) {
         if (sliders.ContainsKey(option)) {
             return sliders[option];
         }
@@ -44,8 +47,28 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         }
         return null;
     }
+
+    private void CleanUp() {
+        foreach (var title in titles) {
+            Destroy(title);
+        }
+        foreach (var pair in sliders) {
+            Destroy(pair.Value);
+        }
+        foreach (var pair in dropdowns) {
+            Destroy(pair.Value);
+        }
+        foreach (var pair in textInputs) {
+            Destroy(pair.Value);
+        }
+    }
+
     private int mod(int x, int m) { return (x%m + m)%m; }
     public IEnumerator WaitUntilReadyThenStart() {
+        if (ready) {
+            yield break;
+        }
+        CleanUp();
         yield return LocalizationSettings.InitializationOperation;
         yield return null;
         SettingGroup currentGroup = null;
@@ -145,24 +168,30 @@ public class ScriptableSettingSpawner : MonoBehaviour {
                 GetSelectable(option).navigation = nav;
             }
         }
+
+        ready = true;
         LocalizationSettings.SelectedLocaleChanged += StringChanged;
     }
-    void Start() {
-        StartCoroutine(WaitUntilReadyThenStart());
+
+    private void Awake() {
+        ready = false;
     }
-    public void OnEnable() {
+
+    void OnEnable() {
+        StartCoroutine(WaitUntilReadyThenStart());
         StartCoroutine(WaitAndThenSelect());
     }
-    public IEnumerator WaitAndThenSelect() {
-        yield return null;
+    private IEnumerator WaitAndThenSelect() {
+        yield return new WaitUntil(()=>ready);
         Setting topOption = SettingsManager.GetSettings()[0];
         if (sliders.ContainsKey(topOption)) {
-            //GetComponentInParent<EventSystem>()?.SetSelectedGameObject(sliders[topOption].gameObject);
             sliders[topOption].Select();
         }
         if (dropdowns.ContainsKey(topOption)) {
-            //GetComponentInParent<EventSystem>()?.SetSelectedGameObject(dropdowns[topOption].gameObject);
             dropdowns[topOption].Select();
+        }
+        if (textInputs.ContainsKey(topOption)) {
+            textInputs[topOption].Select();
         }
     }
     public void CreateTitle(LocalizedString group) {
@@ -175,8 +204,9 @@ public class ScriptableSettingSpawner : MonoBehaviour {
             }
         }
         title.GetComponentInChildren<LocalizeStringEvent>().StringReference = group;
+        titles.Add(title);
     }
-    public void CreateSlider(Setting option) {
+    private void CreateSlider(Setting option) {
         GameObject s = GameObject.Instantiate(slider, Vector3.zero, Quaternion.identity);
         s.transform.SetParent(this.transform);
         s.transform.localScale = Vector3.one;
@@ -215,7 +245,7 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         }
         sliders.Add(option, slid);
     }
-    public void CreateStringInput(Setting option) {
+    private void CreateStringInput(Setting option) {
         GameObject d = GameObject.Instantiate(textInput, Vector3.zero, Quaternion.identity);
         d.transform.SetParent(this.transform);
         d.transform.localScale = Vector3.one;
