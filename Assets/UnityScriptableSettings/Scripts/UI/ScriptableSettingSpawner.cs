@@ -129,8 +129,8 @@ public class ScriptableSettingSpawner : MonoBehaviour {
                     if (targetGroup == SettingsManager.GetSettings()[i].group && startRange == -1) {
                         startRange = i;
                     }
-                    if (targetGroup != SettingsManager.GetSettings()[i].group && startRange != -1 && endRange == -1) {
-                        endRange = i;
+                    if (targetGroup == SettingsManager.GetSettings()[i].group) {
+                        endRange = i+1;
                     }
                 }
             } else {
