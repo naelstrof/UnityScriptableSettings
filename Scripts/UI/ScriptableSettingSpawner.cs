@@ -11,6 +11,8 @@ using UnityEngine.UI;
 
 namespace UnityScriptableSettings {
 public class ScriptableSettingSpawner : MonoBehaviour {
+    public delegate void FinishSpawningAction();
+    public FinishSpawningAction doneSpawning;
     public enum NavigationMode {
         Auto,
         Override
@@ -170,6 +172,7 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         }
 
         ready = true;
+        doneSpawning?.Invoke();
         LocalizationSettings.SelectedLocaleChanged += StringChanged;
     }
 
