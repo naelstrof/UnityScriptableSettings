@@ -16,7 +16,9 @@ public class SettingResolution : SettingDropdown {
         base.SetValue(value);
     }
     public override void Save() {
-        Resolution r = Screen.currentResolution;
+        // This apparently can report 0x0_0 if the game is minimized or otherwise not displaying??
+        //Resolution r = Screen.currentResolution;
+        Resolution r = Screen.resolutions[Mathf.RoundToInt(GetValue())];
         PlayerPrefs.SetInt ("Screenmanager Resolution Height", r.height);
         PlayerPrefs.SetInt ("Screenmanager Resolution Width", r.width);
         PlayerPrefs.SetInt ("Screenmanager Refresh Rate", r.refreshRate);
@@ -34,7 +36,7 @@ public class SettingResolution : SettingDropdown {
         int count = Screen.resolutions.Length;
         dropdownOptions = new string[count];
         for(int i=0;i<count;i++) {
-            dropdownOptions[i] = Screen.resolutions[i].width + "x" + Screen.resolutions[i].height + "_" + Screen.resolutions[i].refreshRate;
+            dropdownOptions[i] = $"{Screen.resolutions[i].width}x{Screen.resolutions[i].height}_{Screen.resolutions[i].refreshRate}";
         }
     }
 }
