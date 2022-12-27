@@ -25,8 +25,25 @@ public class SettingLanguage : SettingDropdown {
         base.SetValue(value);
     }
 
+    public override int GetValue() {
+        // This is awful, but if the user hasn't selected a locale, try to load the value that's just-- currently selected.
+        if (selectedValue == -1) {
+            for(int i=0;i<LocalizationSettings.AvailableLocales.Locales.Count;i++) {
+                if (LocalizationSettings.AvailableLocales.Locales[i].name == LocalizationSettings.SelectedLocale.name) {
+                    return i;
+                }
+            }
+        }
+
+        if (selectedValue == -1) {
+            return 0;
+        }
+
+        return base.GetValue();
+    }
+
     public override void Save() {
-        if (GetValue() == -1) {
+        if (selectedValue == -1) {
             return;
         }
         base.Save();

@@ -1,7 +1,7 @@
 {
     "name": "com.naelstrof.unityscriptablesettings",
     "displayName": "Unity Scriptable Settings",
-    "version": "2.3.9",
+    "version": "2.4.0",
     "unity": "2020.3",
     "dependencies": {
         "com.unity.localization": "1.0.4",
