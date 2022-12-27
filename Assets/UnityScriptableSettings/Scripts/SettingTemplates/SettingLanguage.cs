@@ -24,6 +24,14 @@ public class SettingLanguage : SettingDropdown {
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[value];
         base.SetValue(value);
     }
+
+    public override void Save() {
+        if (GetValue() == -1) {
+            return;
+        }
+        base.Save();
+    }
+
     public override void Load() {
         SettingsManager.StaticStartCoroutine(OverrideDropdownWithLanguages());
     }
