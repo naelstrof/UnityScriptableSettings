@@ -9,47 +9,42 @@ namespace UnityScriptableSettings {
 [CreateAssetMenu(fileName = "New Language Setting", menuName = "Unity Scriptable Setting/Language", order = 54)]
 public class SettingLanguage : SettingDropdown {
     public override void SetValue(int value) {
-        base.SetValue(value);
-        // -1 means the user hasn't specifically selected a locale.
-        if (value == -1) {
-            return;
-        }
         SettingsManager.StaticStartCoroutine(ChangeLanguage(value));
     }
     private IEnumerator ChangeLanguage(int value) {
-        if (value == -1) {
-            yield break;
-        }
         yield return LocalizationSettings.InitializationOperation;
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[value];
-        base.SetValue(value);
     }
 
     public override int GetValue() {
-        // This is awful, but if the user hasn't selected a locale, try to load the value that's just-- currently selected.
-        if (selectedValue == -1) {
-            for(int i=0;i<LocalizationSettings.AvailableLocales.Locales.Count;i++) {
-                if (LocalizationSettings.AvailableLocales.Locales[i].name == LocalizationSettings.SelectedLocale.name) {
-                    return i;
-                }
+        // Ignore whatever setting we have, and just try our best to return what is reported from LocalizationSettings.
+        for(int i=0;i<LocalizationSettings.AvailableLocales.Locales.Count;i++) {
+            if (LocalizationSettings.AvailableLocales.Locales[i].name == LocalizationSettings.SelectedLocale.name) {
+                return i;
             }
         }
-
-        if (selectedValue == -1) {
-            return 0;
-        }
-
-        return base.GetValue();
+        return 0;
     }
 
     public override void Save() {
-        if (selectedValue == -1) {
-            return;
-        }
-        base.Save();
+        // Handled by PlayerPrefLocaleSelector
     }
 
     public override void Load() {
+        bool foundLocaleLoader = false;
+        foreach (var loader in LocalizationSettings.StartupLocaleSelectors) {
+            if (loader is PlayerPrefLocaleSelector) {
+                foundLocaleLoader = true;
+                break;
+            }
+        }
+
+        if (!foundLocaleLoader) {
+            Debug.LogError(
+                "Language loader didn't find a PlayerPrefLocaleSelector in the StartupLocaleSelectors.\n" +
+                " You should change the Project Settings to have it in order for it to load properly.");
+        }
+
         SettingsManager.StaticStartCoroutine(OverrideDropdownWithLanguages());
     }
     private IEnumerator OverrideDropdownWithLanguages() {
@@ -58,8 +53,6 @@ public class SettingLanguage : SettingDropdown {
         for(int i=0;i<LocalizationSettings.AvailableLocales.Locales.Count;i++) {
             dropdownOptions[i] = LocalizationSettings.AvailableLocales.Locales[i].name;
         }
-        int detectedLocale = PlayerPrefs.GetInt(name, -1);
-        SetValue(detectedLocale);
     }
 }
 
