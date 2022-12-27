@@ -9,9 +9,17 @@ namespace UnityScriptableSettings {
 [CreateAssetMenu(fileName = "New Language Setting", menuName = "Unity Scriptable Setting/Language", order = 54)]
 public class SettingLanguage : SettingDropdown {
     public override void SetValue(int value) {
+        base.SetValue(value);
+        // -1 means the user hasn't specifically selected a locale.
+        if (value == -1) {
+            return;
+        }
         SettingsManager.StaticStartCoroutine(ChangeLanguage(value));
     }
     private IEnumerator ChangeLanguage(int value) {
+        if (value == -1) {
+            yield break;
+        }
         yield return LocalizationSettings.InitializationOperation;
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[value];
         base.SetValue(value);
@@ -26,9 +34,7 @@ public class SettingLanguage : SettingDropdown {
             dropdownOptions[i] = LocalizationSettings.AvailableLocales.Locales[i].name;
         }
         int detectedLocale = PlayerPrefs.GetInt(name, -1);
-        if (detectedLocale != -1) {
-            SetValue(detectedLocale);
-        }
+        SetValue(detectedLocale);
     }
 }
 
