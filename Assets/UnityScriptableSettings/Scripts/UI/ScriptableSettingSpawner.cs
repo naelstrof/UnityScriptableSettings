@@ -87,19 +87,11 @@ public class ScriptableSettingSpawner : MonoBehaviour {
                 CreateDropDown(dropdown);
                 dropdown.changed += (o) => {
                     var dropLookup = dropdowns[option];
-                    if (dropLookup == null) {
-                        return;
-                    }
                     List<TMP_Dropdown.OptionData> data = new List<TMP_Dropdown.OptionData>();
-                    if (option.GetType().IsSubclassOf(typeof(SettingLocalizedDropdown)) || option is SettingLocalizedDropdown) {
-                        foreach(LocalizedString str in ((SettingLocalizedDropdown)option).GetLocalizedDropdowns()) {
-                            data.Add(new TMP_Dropdown.OptionData(str.GetLocalizedString()));
-                        }
-                    } else if (option.GetType().IsSubclassOf(typeof(SettingDropdown)) || option is SettingDropdown) {
-                        foreach(string str in ((SettingDropdown)option).GetDropdownOptions()) {
-                            data.Add(new TMP_Dropdown.OptionData(str));
-                        }
+                    foreach(string str in dropdown.GetDropdownOptions()) {
+                        data.Add(new TMP_Dropdown.OptionData(str));
                     }
+                    dropLookup.ClearOptions();
                     dropLookup.options = data;
                     dropLookup.SetValueWithoutNotify(o);
                 };
