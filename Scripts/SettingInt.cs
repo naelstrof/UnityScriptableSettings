@@ -33,5 +33,8 @@ namespace UnityScriptableSettings {
             base.Load();
             SetValue(PlayerPrefs.GetInt(name, defaultValue));
         }
+        public void NotifyChange() {
+            changed?.Invoke(selectedValue);
+        }
     }
 }

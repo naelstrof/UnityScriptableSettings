@@ -8,11 +8,10 @@ namespace UnityScriptableSettings {
     public class SettingDropdown : SettingInt {
         [SerializeField]
         protected string[] dropdownOptions;
-
+        
         public string[] GetDropdownOptions() {
             return dropdownOptions;
         }
-
         public override void SetValue(int value) {
             value = Mathf.Clamp(value, 0, dropdownOptions.Length-1);
             base.SetValue(value);
