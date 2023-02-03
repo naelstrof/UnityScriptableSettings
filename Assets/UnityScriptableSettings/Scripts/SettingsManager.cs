@@ -26,6 +26,17 @@ public class SettingsManager : MonoBehaviour {
         return instance.StartCoroutine(routine);
     }
 
+    public static void AddSetting(Setting newSetting) {
+        instance.settings.Add(newSetting);
+        instance.settings.Sort((a,b)=>String.Compare(a.group.name.ToString(), b.group.name.ToString(), StringComparison.InvariantCulture));
+        newSetting.Load();
+    }
+
+    public static void RemoveSetting(Setting setting) {
+        instance.settings.Remove(setting);
+        instance.settings.Sort((a,b)=>String.Compare(a.group.name.ToString(), b.group.name.ToString(), StringComparison.InvariantCulture));
+    }
+
     public static Setting GetSetting(string name) {
         foreach(Setting s in instance.settings) {
             if (s.name == name) {
@@ -40,7 +51,7 @@ public class SettingsManager : MonoBehaviour {
     }
 
     private void Start() {
-        settings.Sort((a,b)=>String.Compare(a.group.name.ToString(), b.group.name.ToString(), StringComparison.Ordinal));
+        settings.Sort((a,b)=>String.Compare(a.group.name.ToString(), b.group.name.ToString(), StringComparison.InvariantCulture));
         foreach(var setting in settings) {
             setting.Load();
         }
