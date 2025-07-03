@@ -21,16 +21,13 @@ namespace UnityScriptableSettings {
         }
 
         public override void ResetToDefault() {
-            base.ResetToDefault();
             SetValue(defaultValue);
         }
 
         public override void Save() {
-            base.Save();
             PlayerPrefs.SetInt(name, GetValue());
         }
         public override void Load() {
-            base.Load();
             SetValue(PlayerPrefs.GetInt(name, defaultValue));
         }
         public void NotifyChange() {

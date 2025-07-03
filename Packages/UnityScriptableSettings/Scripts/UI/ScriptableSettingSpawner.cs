@@ -79,7 +79,7 @@ public class ScriptableSettingSpawner : MonoBehaviour {
                 continue;
             }
             if (currentGroup != option.group || currentGroup == null) {
-                CreateTitle(option.group.localizedName);
+                CreateTitle(option.group);
                 currentGroup = option.group;
             }
 
@@ -206,16 +206,24 @@ public class ScriptableSettingSpawner : MonoBehaviour {
             textInputs[topOption].Select();
         }
     }
-    public void CreateTitle(LocalizedString group) {
+    public void CreateTitle(SettingGroup group) {
         GameObject title = GameObject.Instantiate(groupTitle, Vector3.zero, Quaternion.identity);
         title.transform.SetParent(this.transform);
         title.transform.localScale = Vector3.one;
         foreach( TMP_Text t in title.GetComponentsInChildren<TMP_Text>()) {
             if (t.name == "Label") {
-                t.text = group.GetLocalizedString();
+                t.text = group.GetLabel();
             }
         }
-        title.GetComponentInChildren<LocalizeStringEvent>().StringReference = group;
+
+        var lse = title.GetComponentInChildren<LocalizeStringEvent>();
+        if (group.TryGetLocalizedLabel(out var localizedLabel)) {
+            lse.StringReference = localizedLabel;
+            lse.enabled = true;
+        } else {
+            lse.enabled = false;
+        }
+
         titles.Add(title);
     }
     private void CreateSlider(Setting option) {
@@ -224,8 +232,14 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         s.transform.localScale = Vector3.one;
         foreach( TMP_Text t in s.GetComponentsInChildren<TMP_Text>()) {
             if (t.name == "Label") {
-                t.text = option.localizedName.GetLocalizedString();
-                t.GetComponent<LocalizeStringEvent>().StringReference = option.localizedName;
+                t.text = option.GetLabel();
+                var lse = t.GetComponent<LocalizeStringEvent>();
+                if (option.TryGetLocalizedLabel(out var localizedLabel)) {
+                    lse.StringReference = localizedLabel;
+                    lse.enabled = true;
+                } else {
+                    lse.enabled = false;
+                }
             }
             if (option is SettingIntClamped intClamped) {
                 if (t.name == "Min") {
@@ -264,8 +278,14 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         foreach( TMP_Text t in d.GetComponentsInChildren<TMP_Text>()) {
             if (t.name == "Label") {
                 //t.text = o.type.ToString();
-                t.text = option.localizedName.GetLocalizedString();
-                t.GetComponent<LocalizeStringEvent>().StringReference = option.localizedName;
+                t.text = option.GetLabel();
+                var localizedStringEvent = t.GetComponent<LocalizeStringEvent>();
+                if (option.TryGetLocalizedLabel(out var localizedLabel)) {
+                    localizedStringEvent.enabled = true;
+                    localizedStringEvent.StringReference = localizedLabel;
+                } else {
+                    localizedStringEvent.enabled = false;
+                }
             }
         }
         TMP_InputField inputField = d.GetComponentInChildren<TMP_InputField>();
@@ -319,8 +339,14 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         foreach( TMP_Text t in d.GetComponentsInChildren<TMP_Text>()) {
             if (t.name == "Label") {
                 //t.text = o.type.ToString();
-                t.text = option.localizedName.GetLocalizedString();
-                t.GetComponent<LocalizeStringEvent>().StringReference = option.localizedName;
+                t.text = option.GetLabel();
+                var lse = t.GetComponent<LocalizeStringEvent>();
+                if (option.TryGetLocalizedLabel(out var localizedLabel)) {
+                    lse.StringReference = localizedLabel;
+                    lse.enabled = true;
+                } else {
+                    lse.enabled = false;
+                }
             }
         }
         List<TMP_Dropdown.OptionData> data = new List<TMP_Dropdown.OptionData>();
