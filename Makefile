@@ -1,2 +1,2 @@
 deploy:
-	git subtree push --prefix Assets/UnityScriptableSettings origin upm
+	git subtree push --prefix Packages/UnityScriptableSettings origin upm
