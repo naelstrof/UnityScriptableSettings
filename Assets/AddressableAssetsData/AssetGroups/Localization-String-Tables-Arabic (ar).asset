@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Localization-String-Tables-Arabic (ar)
   m_EditorClassIdentifier: 
   m_GroupName: Localization-String-Tables-Arabic (ar)
-  m_Data:
-    m_SerializedData: []
   m_GUID: ff5fa3a42c9f6434791cce54790ffaf3
   m_SerializeEntries:
   - m_GUID: a3e0c0b10fe2f8641ba65d339e33f79a
@@ -22,6 +20,7 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ar
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 3f81f96e8e35f0647a0c2f1ccbdb9fad, type: 2}
   m_SchemaSet:

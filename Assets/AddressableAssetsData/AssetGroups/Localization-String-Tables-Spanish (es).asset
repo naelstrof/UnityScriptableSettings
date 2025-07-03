@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Localization-String-Tables-Spanish (es)
   m_EditorClassIdentifier: 
   m_GroupName: Localization-String-Tables-Spanish (es)
-  m_Data:
-    m_SerializedData: []
   m_GUID: f93d5d5226d8fd44f8763e8ebaae458b
   m_SerializeEntries:
   - m_GUID: 8554c923aec5b5a43975c7a677eb8455
@@ -22,6 +20,7 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-es
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 3f81f96e8e35f0647a0c2f1ccbdb9fad, type: 2}
   m_SchemaSet:
