@@ -15,7 +15,7 @@ public class SettingGroup : ScriptableObject {
     [Tooltip("Backup label of the option. Only necessary if the localized label is null.")]
     [SerializeField] private string backupLabel;
     public string GetLabel() {
-        if (localizedLabel == null) {
+        if (localizedLabel == null || localizedLabel.IsEmpty) {
             if (string.IsNullOrEmpty(backupLabel)) {
                 return name;
             }
