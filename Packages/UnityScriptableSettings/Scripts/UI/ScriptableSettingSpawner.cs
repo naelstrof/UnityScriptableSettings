@@ -214,11 +214,14 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         }
 
         var lse = title.GetComponentInChildren<LocalizeStringEvent>();
-        if (group.GetLabel().TryGetLocalizedLabel(out var localizedLabel)) {
-            lse.StringReference = localizedLabel;
-            lse.enabled = true;
-        } else {
-            lse.enabled = false;
+        if (lse != null) {
+            if (group.GetLabel().TryGetLocalizedLabel(out var localizedLabel)) {
+                lse.StringReference = localizedLabel;
+                lse.enabled = true;
+            }
+            else {
+                lse.enabled = false;
+            }
         }
 
         titles.Add(title);
