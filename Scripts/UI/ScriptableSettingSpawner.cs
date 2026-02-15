@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 using UnityEngine.Localization.Settings;
@@ -85,22 +83,18 @@ public class ScriptableSettingSpawner : MonoBehaviour {
 
             if (option is SettingDropdown dropdown) {
                 CreateDropDown(dropdown);
+                dropdown.changed += (o) => {  };
                 dropdown.changed += (o) => {
+                    dropdowns[option].SetValueWithoutNotify(o);
                     var dropLookup = dropdowns[option];
                     List<TMP_Dropdown.OptionData> data = new List<TMP_Dropdown.OptionData>();
-                    foreach(string str in dropdown.GetDropdownOptions()) {
-                        data.Add(new TMP_Dropdown.OptionData(str));
+                    foreach(var str in dropdown.GetLocalizedDropdowns()) {
+                        data.Add(new TMP_Dropdown.OptionData(str.GetLocalizedString()));
                     }
                     dropLookup.ClearOptions();
                     dropLookup.options = data;
                     dropLookup.SetValueWithoutNotify(o);
                 };
-                continue;
-            }
-
-            if (option is SettingLocalizedDropdown localizedDropdown) {
-                CreateDropDown(localizedDropdown);
-                localizedDropdown.changed += (o) => { dropdowns[option].SetValueWithoutNotify(o); };
                 continue;
             }
 
@@ -212,12 +206,12 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         title.transform.localScale = Vector3.one;
         foreach( TMP_Text t in title.GetComponentsInChildren<TMP_Text>()) {
             if (t.name == "Label") {
-                t.text = group.GetLabel();
+                t.text = group.GetLabel().GetLocalizedString();
             }
         }
 
         var lse = title.GetComponentInChildren<LocalizeStringEvent>();
-        if (group.TryGetLocalizedLabel(out var localizedLabel)) {
+        if (group.GetLabel().TryGetLocalizedLabel(out var localizedLabel)) {
             lse.StringReference = localizedLabel;
             lse.enabled = true;
         } else {
@@ -350,13 +344,13 @@ public class ScriptableSettingSpawner : MonoBehaviour {
             }
         }
         List<TMP_Dropdown.OptionData> data = new List<TMP_Dropdown.OptionData>();
-        if (option.GetType().IsSubclassOf(typeof(SettingLocalizedDropdown)) || option is SettingLocalizedDropdown) {
-            foreach(LocalizedString str in ((SettingLocalizedDropdown)option).GetLocalizedDropdowns()) {
+        if (option.GetType().IsSubclassOf(typeof(SettingDropdown)) || option is SettingDropdown) {
+            foreach(var str in ((SettingDropdown)option).GetLocalizedDropdowns()) {
                 data.Add(new TMP_Dropdown.OptionData(str.GetLocalizedString()));
             }
         } else if (option.GetType().IsSubclassOf(typeof(SettingDropdown)) || option is SettingDropdown) {
-            foreach(string str in ((SettingDropdown)option).GetDropdownOptions()) {
-                data.Add(new TMP_Dropdown.OptionData(str));
+            foreach(var str in ((SettingDropdown)option).GetLocalizedDropdowns()) {
+                data.Add(new TMP_Dropdown.OptionData(str.GetLocalizedString()));
             }
         }
         TMP_Dropdown drop = d.GetComponentInChildren<TMP_Dropdown>();
@@ -378,15 +372,15 @@ public class ScriptableSettingSpawner : MonoBehaviour {
             yield return LocalizationSettings.InitializationOperation;
             foreach (Setting option in SettingsManager.GetSettings()) {
                 if (dropdowns.ContainsKey(option)) {
-                    if (!option.GetType().IsSubclassOf(typeof(SettingLocalizedDropdown)) && !(option is SettingLocalizedDropdown)) {
+                    if (!option.GetType().IsSubclassOf(typeof(SettingDropdown)) && !(option is SettingDropdown)) {
                         continue;
                     }
                     dropdowns[option].ClearOptions();
-                    for(int i=0;i<((SettingLocalizedDropdown)option).GetLocalizedDropdowns().Length;i++) {
+                    for(int i=0;i<((SettingDropdown)option).GetLocalizedDropdowns().Length;i++) {
                         while (dropdowns[option].options.Count <= i) {
-                            dropdowns[option].options.Add(new TMP_Dropdown.OptionData((option as SettingLocalizedDropdown).GetLocalizedDropdowns()[i].GetLocalizedString()));
+                            dropdowns[option].options.Add(new TMP_Dropdown.OptionData((option as SettingDropdown).GetLocalizedDropdowns()[i].GetLocalizedString()));
                         }
-                        dropdowns[option].options[i].text = (option as SettingLocalizedDropdown).GetLocalizedDropdowns()[i].GetLocalizedString();
+                        dropdowns[option].options[i].text = (option as SettingDropdown).GetLocalizedDropdowns()[i].GetLocalizedString();
                     }
                     dropdowns[option].SetValueWithoutNotify(1);
                     dropdowns[option].SetValueWithoutNotify(0);
