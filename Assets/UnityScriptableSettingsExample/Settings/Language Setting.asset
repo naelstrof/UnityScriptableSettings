@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5732378b56f8bf148aa492a68181b2fe, type: 3}
   m_Name: Language Setting
   m_EditorClassIdentifier: 
-  localizedName:
+  localizedLabel:
     m_TableReference:
       m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
     m_TableEntryReference:
@@ -20,17 +20,11 @@ MonoBehaviour:
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 1
+    m_LocalVariables: []
+  backupLabel: Language
   group: {fileID: 11400000, guid: 3ef0434aaf06c2b41ab484cd93250edc, type: 2}
-  OnSettingDisabled:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSettingEnabled:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSettingChanged:
-    m_PersistentCalls:
-      m_Calls: []
   defaultValue: 0
-  minValue: 0
-  maxValue: 0
   dropdownOptions: []
+  references:
+    version: 2
+    RefIds: []

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a9c6626c774e2ea1f8ae290c5c1015, type: 3}
   m_Name: SomeFloat
   m_EditorClassIdentifier: 
-  localizedName:
+  localizedLabel:
     m_TableReference:
       m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
     m_TableEntryReference:
@@ -21,6 +21,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  backupLabel: Bloom
   group: {fileID: 11400000, guid: aea03bad1729d324c8f90a71c2fc4ec9, type: 2}
   defaultValue: 2
   references:

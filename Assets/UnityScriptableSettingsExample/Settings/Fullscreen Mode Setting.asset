@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfe2b75415cc134f9ef3518a1933a3d, type: 3}
   m_Name: Fullscreen Mode Setting
   m_EditorClassIdentifier: 
-  localizedName:
+  localizedLabel:
     m_TableReference:
       m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
     m_TableEntryReference:
@@ -20,45 +20,51 @@ MonoBehaviour:
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 1
+    m_LocalVariables: []
+  backupLabel: 
   group: {fileID: 11400000, guid: aea03bad1729d324c8f90a71c2fc4ec9, type: 2}
-  OnSettingDisabled:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSettingEnabled:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSettingChanged:
-    m_PersistentCalls:
-      m_Calls: []
   defaultValue: 0
-  minValue: 0
-  maxValue: 3
   dropdownOptions:
-  - m_TableReference:
-      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
-    m_TableEntryReference:
-      m_KeyId: 879732772899
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-  - m_TableReference:
-      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
-    m_TableEntryReference:
-      m_KeyId: 879732772900
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-  - m_TableReference:
-      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
-    m_TableEntryReference:
-      m_KeyId: 879732772901
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-  - m_TableReference:
-      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
-    m_TableEntryReference:
-      m_KeyId: 879732772902
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
+  - localizedString:
+      m_TableReference:
+        m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
+      m_TableEntryReference:
+        m_KeyId: 879732772899
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    backupString: Exclusive
+  - localizedString:
+      m_TableReference:
+        m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
+      m_TableEntryReference:
+        m_KeyId: 879732772900
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    backupString: Fullscreen
+  - localizedString:
+      m_TableReference:
+        m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
+      m_TableEntryReference:
+        m_KeyId: 879732772901
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    backupString: Maxed Window
+  - localizedString:
+      m_TableReference:
+        m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
+      m_TableEntryReference:
+        m_KeyId: 879732772902
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    backupString: Windowed
+  references:
+    version: 2
+    RefIds: []

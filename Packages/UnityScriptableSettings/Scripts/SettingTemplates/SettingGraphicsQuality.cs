@@ -8,7 +8,7 @@ namespace UnityScriptableSettings {
     
     
 [CreateAssetMenu(fileName = "New Graphics Quality", menuName = "Unity Scriptable Setting/Graphics Quality", order = 53)]
-public class SettingGraphicsQuality : SettingLocalizedDropdown {
+public class SettingGraphicsQuality : SettingDropdown {
     public override void SetValue(int value) {
         QualitySettings.SetQualityLevel(value);
         Graphics.activeTier = value == 0 ? UnityEngine.Rendering.GraphicsTier.Tier1 : UnityEngine.Rendering.GraphicsTier.Tier3;

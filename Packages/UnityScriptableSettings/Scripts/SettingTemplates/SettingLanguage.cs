@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 
 namespace UnityScriptableSettings {
@@ -49,9 +47,9 @@ public class SettingLanguage : SettingDropdown {
     }
     private IEnumerator OverrideDropdownWithLanguages() {
         yield return LocalizationSettings.InitializationOperation;
-        dropdownOptions = new string[LocalizationSettings.AvailableLocales.Locales.Count];
+        dropdownOptions = new ScriptableSettingString[LocalizationSettings.AvailableLocales.Locales.Count];
         for(int i=0;i<LocalizationSettings.AvailableLocales.Locales.Count;i++) {
-            dropdownOptions[i] = LocalizationSettings.AvailableLocales.Locales[i].name;
+            dropdownOptions[i] = new ScriptableSettingString(LocalizationSettings.AvailableLocales.Locales[i].name);
         }
     }
 }

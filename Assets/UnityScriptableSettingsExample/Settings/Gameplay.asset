@@ -12,11 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff4f29b24841a054fa6d3df958ccc608, type: 3}
   m_Name: Gameplay
   m_EditorClassIdentifier: 
-  localizedName:
-    m_TableReference:
-      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
-    m_TableEntryReference:
-      m_KeyId: 879732772905
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 1
+  label:
+    localizedString:
+      m_TableReference:
+        m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
+      m_TableEntryReference:
+        m_KeyId: 879732772905
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    backupString: Gameplay
+  references:
+    version: 2
+    RefIds: []

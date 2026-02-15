@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Localization;
-using UnityEngine.Localization.Settings;
 
 namespace UnityScriptableSettings {
     
@@ -34,9 +30,9 @@ public class SettingResolution : SettingDropdown {
             }
         }
         int count = Screen.resolutions.Length;
-        dropdownOptions = new string[count];
+        dropdownOptions = new ScriptableSettingString[count];
         for(int i=0;i<count;i++) {
-            dropdownOptions[i] = $"{Screen.resolutions[i].width}x{Screen.resolutions[i].height}_{Screen.resolutions[i].refreshRate}";
+            dropdownOptions[i] = new ScriptableSettingString($"{Screen.resolutions[i].width}x{Screen.resolutions[i].height}_{Screen.resolutions[i].refreshRate}");
         }
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a36e230d7b695e641b12875c0ad827d1, type: 3}
   m_Name: VSync Setting
   m_EditorClassIdentifier: 
-  localizedName:
+  localizedLabel:
     m_TableReference:
       m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
     m_TableEntryReference:
@@ -20,32 +20,31 @@ MonoBehaviour:
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 1
+    m_LocalVariables: []
+  backupLabel: VSync
   group: {fileID: 11400000, guid: aea03bad1729d324c8f90a71c2fc4ec9, type: 2}
-  OnSettingDisabled:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSettingEnabled:
-    m_PersistentCalls:
-      m_Calls: []
-  OnSettingChanged:
-    m_PersistentCalls:
-      m_Calls: []
   defaultValue: 0
-  minValue: 0
-  maxValue: 1
   dropdownOptions:
-  - m_TableReference:
-      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
-    m_TableEntryReference:
-      m_KeyId: 879732772873
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-  - m_TableReference:
-      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
-    m_TableEntryReference:
-      m_KeyId: 879732772903
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-  ignorethis: 0
+  - localizedString:
+      m_TableReference:
+        m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
+      m_TableEntryReference:
+        m_KeyId: 879732772873
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    backupString: Off
+  - localizedString:
+      m_TableReference:
+        m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
+      m_TableEntryReference:
+        m_KeyId: 879732772903
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    backupString: On
+  references:
+    version: 2
+    RefIds: []

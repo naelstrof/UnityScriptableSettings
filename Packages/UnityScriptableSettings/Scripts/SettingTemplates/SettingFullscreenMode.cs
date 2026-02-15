@@ -6,7 +6,7 @@ using UnityEngine.Localization.Settings;
 
 namespace UnityScriptableSettings {
 [CreateAssetMenu(fileName = "New Fullscreen Mode", menuName = "Unity Scriptable Setting/Fullscreen Mode", order = 52)]
-public class SettingFullscreenMode : SettingLocalizedDropdown {
+public class SettingFullscreenMode : SettingDropdown {
     public override void SetValue(int value) {
         switch(value) {
             case 0: Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen; break;

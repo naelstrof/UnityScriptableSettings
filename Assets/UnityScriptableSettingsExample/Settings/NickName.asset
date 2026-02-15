@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5c1d5acd254069988d7b72ded81582, type: 3}
   m_Name: NickName
   m_EditorClassIdentifier: 
-  localizedName:
+  localizedLabel:
     m_TableReference:
       m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
     m_TableEntryReference:
-      m_KeyId: 879732772933
+      m_KeyId: 879732772973
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  backupLabel: Multiplayer Name
   group: {fileID: 11400000, guid: 3ef0434aaf06c2b41ab484cd93250edc, type: 2}
   defaultValue: Newbie
   references:
