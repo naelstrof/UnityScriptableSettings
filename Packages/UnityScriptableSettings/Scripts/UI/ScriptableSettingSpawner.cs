@@ -35,6 +35,8 @@ public class ScriptableSettingSpawner : MonoBehaviour {
     private bool ready;
     [SerializeField]
     private SettingGroup targetGroup;
+
+    [SerializeField] private bool ignoreLocalization;
     Selectable GetSelectable(Setting option) {
         if (sliders.ContainsKey(option)) {
             return sliders[option];
@@ -69,8 +71,10 @@ public class ScriptableSettingSpawner : MonoBehaviour {
             yield break;
         }
         CleanUp();
-        yield return LocalizationSettings.InitializationOperation;
-        yield return null;
+        if (!ignoreLocalization) {
+            yield return LocalizationSettings.InitializationOperation;
+            yield return null;
+        }
         SettingGroup currentGroup = null;
         foreach(Setting option in SettingsManager.GetSettings()) {
             if (targetGroup != null && option.group != targetGroup) {
@@ -83,7 +87,6 @@ public class ScriptableSettingSpawner : MonoBehaviour {
 
             if (option is SettingDropdown dropdown) {
                 CreateDropDown(dropdown);
-                dropdown.changed += (o) => {  };
                 dropdown.changed += (o) => {
                     dropdowns[option].SetValueWithoutNotify(o);
                     var dropLookup = dropdowns[option];
@@ -226,13 +229,16 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         s.transform.localScale = Vector3.one;
         foreach( TMP_Text t in s.GetComponentsInChildren<TMP_Text>()) {
             if (t.name == "Label") {
-                t.text = option.GetLabel();
-                var lse = t.GetComponent<LocalizeStringEvent>();
-                if (option.TryGetLocalizedLabel(out var localizedLabel)) {
-                    lse.StringReference = localizedLabel;
-                    lse.enabled = true;
-                } else {
-                    lse.enabled = false;
+                var label = option.GetLabel();
+                t.text = label.GetLocalizedString();
+                if (t.TryGetComponent<LocalizeStringEvent>(out var lse)) {
+                    if (label.TryGetLocalizedLabel(out var localizedLabel)) {
+                        lse.StringReference = localizedLabel;
+                        lse.enabled = true;
+                    }
+                    else {
+                        lse.enabled = false;
+                    }
                 }
             }
             if (option is SettingIntClamped intClamped) {
@@ -272,13 +278,17 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         foreach( TMP_Text t in d.GetComponentsInChildren<TMP_Text>()) {
             if (t.name == "Label") {
                 //t.text = o.type.ToString();
-                t.text = option.GetLabel();
-                var localizedStringEvent = t.GetComponent<LocalizeStringEvent>();
-                if (option.TryGetLocalizedLabel(out var localizedLabel)) {
-                    localizedStringEvent.enabled = true;
-                    localizedStringEvent.StringReference = localizedLabel;
-                } else {
-                    localizedStringEvent.enabled = false;
+                var label = option.GetLabel();
+                t.text = label.GetLocalizedString();
+
+                if (t.TryGetComponent<LocalizeStringEvent>(out var localizedStringEvent)) {
+                    if (label.TryGetLocalizedLabel(out var localizedLabel)) {
+                        localizedStringEvent.enabled = true;
+                        localizedStringEvent.StringReference = localizedLabel;
+                    }
+                    else {
+                        localizedStringEvent.enabled = false;
+                    }
                 }
             }
         }
@@ -333,13 +343,16 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         foreach( TMP_Text t in d.GetComponentsInChildren<TMP_Text>()) {
             if (t.name == "Label") {
                 //t.text = o.type.ToString();
-                t.text = option.GetLabel();
-                var lse = t.GetComponent<LocalizeStringEvent>();
-                if (option.TryGetLocalizedLabel(out var localizedLabel)) {
-                    lse.StringReference = localizedLabel;
-                    lse.enabled = true;
-                } else {
-                    lse.enabled = false;
+                var label = option.GetLabel();
+                t.text = label.GetLocalizedString();
+                if (t.TryGetComponent<LocalizeStringEvent>(out var lse)) {
+                    if (label.TryGetLocalizedLabel(out var localizedLabel)) {
+                        lse.StringReference = localizedLabel;
+                        lse.enabled = true;
+                    }
+                    else {
+                        lse.enabled = false;
+                    }
                 }
             }
         }
@@ -365,6 +378,9 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         SettingsManager.StaticStartCoroutine(ChangeStrings());
     }
     IEnumerator ChangeStrings() {
+        if (ignoreLocalization) {
+            yield break;
+        }
         var otherAsync = LocalizationSettings.SelectedLocaleAsync;
         yield return new WaitUntil(()=>otherAsync.IsDone);
         yield return new WaitForSecondsRealtime(0.1f);
