@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfe2b75415cc134f9ef3518a1933a3d, type: 3}
   m_Name: Fullscreen Mode Setting
   m_EditorClassIdentifier: 
-  localizedLabel:
-    m_TableReference:
-      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
-    m_TableEntryReference:
-      m_KeyId: 879732772900
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 1
-    m_LocalVariables: []
-  backupLabel: 
+  label:
+    localizedString:
+      m_TableReference:
+        m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
+      m_TableEntryReference:
+        m_KeyId: 879732772880
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    backupString: Window Mode
   group: {fileID: 11400000, guid: aea03bad1729d324c8f90a71c2fc4ec9, type: 2}
   defaultValue: 0
   dropdownOptions:

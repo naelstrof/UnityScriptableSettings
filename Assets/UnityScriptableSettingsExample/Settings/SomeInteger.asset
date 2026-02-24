@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e28d0602a470445684901b4c980cf774, type: 3}
   m_Name: SomeInteger
   m_EditorClassIdentifier: 
-  localizedLabel:
-    m_TableReference:
-      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
-    m_TableEntryReference:
-      m_KeyId: 879732772913
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  backupLabel: Integer Setting
+  label:
+    localizedString:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    backupString: Some integer
   group: {fileID: 11400000, guid: 3ef0434aaf06c2b41ab484cd93250edc, type: 2}
   defaultValue: 1
   references:

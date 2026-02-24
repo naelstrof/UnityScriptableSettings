@@ -23,6 +23,10 @@ public struct ScriptableSettingString {
 
     public string GetLocalizedString() {
         if (localizedString is { IsEmpty: false }) {
+            var str = localizedString.GetLocalizedString();
+            if (string.IsNullOrEmpty(str)) {
+                return backupString;
+            }
             return localizedString.GetLocalizedString();
         }
 

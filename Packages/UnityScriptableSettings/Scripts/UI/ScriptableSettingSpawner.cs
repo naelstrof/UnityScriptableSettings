@@ -73,8 +73,8 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         CleanUp();
         if (!ignoreLocalization) {
             yield return LocalizationSettings.InitializationOperation;
-            yield return null;
         }
+        yield return null;
         SettingGroup currentGroup = null;
         foreach(Setting option in SettingsManager.GetSettings()) {
             if (targetGroup != null && option.group != targetGroup) {
@@ -88,7 +88,6 @@ public class ScriptableSettingSpawner : MonoBehaviour {
             if (option is SettingDropdown dropdown) {
                 CreateDropDown(dropdown);
                 dropdown.changed += (o) => {
-                    dropdowns[option].SetValueWithoutNotify(o);
                     var dropLookup = dropdowns[option];
                     List<TMP_Dropdown.OptionData> data = new List<TMP_Dropdown.OptionData>();
                     foreach(var str in dropdown.GetLocalizedDropdowns()) {
@@ -238,8 +237,7 @@ public class ScriptableSettingSpawner : MonoBehaviour {
                     if (label.TryGetLocalizedLabel(out var localizedLabel)) {
                         lse.StringReference = localizedLabel;
                         lse.enabled = true;
-                    }
-                    else {
+                    } else {
                         lse.enabled = false;
                     }
                 }

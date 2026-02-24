@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5d430d288381647972ff8f041b1abc, type: 3}
   m_Name: Quality Setting
   m_EditorClassIdentifier: 
-  localizedLabel:
-    m_TableReference:
-      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
-    m_TableEntryReference:
-      m_KeyId: 879732772897
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 1
-    m_LocalVariables: []
-  backupLabel: Overall Quality
+  label:
+    localizedString:
+      m_TableReference:
+        m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
+      m_TableEntryReference:
+        m_KeyId: 879732772897
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    backupString: Graphics Quality
   group: {fileID: 11400000, guid: aea03bad1729d324c8f90a71c2fc4ec9, type: 2}
   defaultValue: 0
   dropdownOptions:

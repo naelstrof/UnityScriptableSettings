@@ -12,19 +12,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5732378b56f8bf148aa492a68181b2fe, type: 3}
   m_Name: Language Setting
   m_EditorClassIdentifier: 
-  localizedLabel:
-    m_TableReference:
-      m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
-    m_TableEntryReference:
-      m_KeyId: 879732772904
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 1
-    m_LocalVariables: []
-  backupLabel: Language
+  label:
+    localizedString:
+      m_TableReference:
+        m_TableCollectionName: GUID:18ec60e56d612e2408ec4cbf19ca8104
+      m_TableEntryReference:
+        m_KeyId: 879732772904
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    backupString: Language
   group: {fileID: 11400000, guid: 3ef0434aaf06c2b41ab484cd93250edc, type: 2}
   defaultValue: 0
-  dropdownOptions: []
+  dropdownOptions:
+  - localizedString:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    backupString: Arabic (ar)
+  - localizedString:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    backupString: Chinese (Simplified) (zh)
+  - localizedString:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    backupString: English (en)
+  - localizedString:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    backupString: Japanese (ja)
+  - localizedString:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    backupString: Spanish (es)
   references:
     version: 2
     RefIds: []

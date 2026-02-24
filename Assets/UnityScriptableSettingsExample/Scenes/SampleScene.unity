@@ -450,6 +450,7 @@ MonoBehaviour:
   groupTitle: {fileID: 1234408531855058166, guid: b7f61b3a2e12de4448fccfd06520c7b0, type: 3}
   titles: []
   targetGroup: {fileID: 11400000, guid: aea03bad1729d324c8f90a71c2fc4ec9, type: 2}
+  ignoreLocalization: 0
 --- !u!114 &509967513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -775,7 +776,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2057998860}
   m_HandleRect: {fileID: 2057998859}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
