@@ -1,16 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
 namespace UnityScriptableSettings {
 
-public class SliderAmountDisplay : MonoBehaviour
-{
+public class SliderAmountDisplay : MonoBehaviour {
     public CanvasGroup group;
     private WaitForEndOfFrame wait = new WaitForEndOfFrame();
-    public TMPro.TextMeshProUGUI targetText;
+    public TextMeshProUGUI targetText;
     public IEnumerator FadeOut() {
         float start = Time.realtimeSinceStartup;
         // Wait for 2 seconds in real time.
@@ -22,15 +20,19 @@ public class SliderAmountDisplay : MonoBehaviour
             yield return wait;
         }
     }
+
+    void OnEnable() {
+        group.alpha = 0f;
+    }
     public void UpdateText(float single) {
-        if (single.ToString().Length > 4) {
+        if (single.ToString(CultureInfo.CurrentCulture).Length > 4) {
             targetText.text = single.ToString("0.00");
         } else {
-            targetText.text = single.ToString();
+            targetText.text = single.ToString(CultureInfo.CurrentCulture);
         }
         group.alpha = 1f;
         StopAllCoroutines();
-        StartCoroutine("FadeOut");
+        StartCoroutine(FadeOut());
     }
 }
 
