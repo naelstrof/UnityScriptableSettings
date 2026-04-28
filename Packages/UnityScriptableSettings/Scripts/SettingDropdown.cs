@@ -6,7 +6,7 @@ namespace UnityScriptableSettings {
     public class SettingDropdown : SettingInt {
         [SerializeField] protected ScriptableSettingString[] dropdownOptions;
         
-        public ScriptableSettingString[] GetLocalizedDropdowns() {
+        public virtual ScriptableSettingString[] GetLocalizedDropdowns() {
             return dropdownOptions;
         }
         
