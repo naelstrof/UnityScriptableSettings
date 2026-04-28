@@ -4,6 +4,15 @@ namespace UnityScriptableSettings {
     
 [CreateAssetMenu(fileName = "New Resolution", menuName = "Unity Scriptable Setting/Resolution", order = 55)]
 public class SettingResolution : SettingDropdown {
+    public override ScriptableSettingString[] GetLocalizedDropdowns() {
+        int count = Screen.resolutions.Length;
+        var dropdowns = new ScriptableSettingString[count];
+        for(int i=0;i<count;i++) {
+            dropdowns[i] = new ScriptableSettingString($"{Screen.resolutions[i].width}x{Screen.resolutions[i].height}_{Screen.resolutions[i].refreshRate}");
+        }
+        return dropdowns;
+    }
+
     public override void SetValue(int value) {
         Resolution r = Screen.resolutions[Mathf.RoundToInt(value)];
         if (Screen.currentResolution.width != r.width || Screen.currentResolution.height != r.height || Screen.currentResolution.refreshRate != r.refreshRate) {
@@ -28,11 +37,6 @@ public class SettingResolution : SettingDropdown {
                 selectedValue = i;
                 break;
             }
-        }
-        int count = Screen.resolutions.Length;
-        dropdownOptions = new ScriptableSettingString[count];
-        for(int i=0;i<count;i++) {
-            dropdownOptions[i] = new ScriptableSettingString($"{Screen.resolutions[i].width}x{Screen.resolutions[i].height}_{Screen.resolutions[i].refreshRate}");
         }
     }
 }

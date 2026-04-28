@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -32,6 +33,11 @@ public class ScriptableSettingSpawner : MonoBehaviour {
     private Dictionary<Setting,Slider> sliders = new Dictionary<Setting, Slider>();
     private Dictionary<Setting,TMP_Dropdown> dropdowns = new Dictionary<Setting, TMP_Dropdown>();
     private Dictionary<Setting,TMP_InputField> textInputs = new Dictionary<Setting, TMP_InputField>();
+    
+    private Dictionary<SettingInt, SettingInt.SettingIntAction> settingIntActions = new  Dictionary<SettingInt, SettingInt.SettingIntAction>();
+    private Dictionary<SettingFloat, SettingFloat.SettingFloatAction> settingFloatActions = new  Dictionary<SettingFloat, SettingFloat.SettingFloatAction>();
+    private Dictionary<SettingString, SettingString.SettingStringAction> settingStringActions = new  Dictionary<SettingString, SettingString.SettingStringAction>();
+    
     private bool ready;
     [SerializeField]
     private SettingGroup targetGroup;
@@ -51,17 +57,44 @@ public class ScriptableSettingSpawner : MonoBehaviour {
     }
 
     private void CleanUp() {
+        foreach (var pair in settingIntActions) {
+            if (pair.Key) {
+                pair.Key.changed -= pair.Value;
+            }
+        }
+        foreach (var pair in settingFloatActions) {
+            if (pair.Key) {
+                pair.Key.changed -= pair.Value;
+            }
+        }
+        foreach (var pair in settingStringActions) {
+            if (pair.Key) {
+                pair.Key.changed -= pair.Value;
+            }
+        }
+        settingIntActions.Clear();
+        settingFloatActions.Clear();
+        settingStringActions.Clear();
+        
         foreach (var title in titles) {
-            Destroy(title);
+            if (title) {
+                Destroy(title);
+            }
         }
         foreach (var pair in sliders) {
-            Destroy(pair.Value);
+            if (pair.Value) {
+                Destroy(pair.Value);
+            }
         }
         foreach (var pair in dropdowns) {
-            Destroy(pair.Value);
+            if (pair.Value) {
+                Destroy(pair.Value);
+            }
         }
         foreach (var pair in textInputs) {
-            Destroy(pair.Value);
+            if (pair.Value) {
+                Destroy(pair.Value);
+            }
         }
     }
 
@@ -87,44 +120,82 @@ public class ScriptableSettingSpawner : MonoBehaviour {
 
             if (option is SettingDropdown dropdown) {
                 CreateDropDown(dropdown);
-                dropdown.changed += (o) => {
+
+                void OnDropdownOnChanged(int o) {
                     var dropLookup = dropdowns[option];
                     List<TMP_Dropdown.OptionData> data = new List<TMP_Dropdown.OptionData>();
-                    foreach(var str in dropdown.GetLocalizedDropdowns()) {
+                    foreach (var str in dropdown.GetLocalizedDropdowns()) {
                         data.Add(new TMP_Dropdown.OptionData(str.GetLocalizedString()));
                     }
+
                     dropLookup.ClearOptions();
                     dropLookup.options = data;
                     dropLookup.SetValueWithoutNotify(o);
-                };
+                }
+                
+                settingIntActions.Add(dropdown, OnDropdownOnChanged);
+
+                dropdown.changed += OnDropdownOnChanged;
                 continue;
             }
 
             if (option is SettingFloatClamped floatSlider) {
                 CreateSlider(option);
-                floatSlider.changed += (o) => {sliders[option].SetValueWithoutNotify(o);};
+
+                void OnFloatSliderOnchanged(float o) {
+                    sliders[option].SetValueWithoutNotify(o);
+                }
+                
+                settingFloatActions.Add(floatSlider, OnFloatSliderOnchanged);
+
+                floatSlider.changed += OnFloatSliderOnchanged;
                 continue;
             }
             
             if (option is SettingIntClamped intSlider) {
                 CreateSlider(option);
-                intSlider.changed += (o) => {sliders[option].SetValueWithoutNotify(o);};
+
+                void OnINTSliderOnchanged(int o) {
+                    sliders[option].SetValueWithoutNotify(o);
+                }
+                
+                settingIntActions.Add(intSlider, OnINTSliderOnchanged);
+
+                intSlider.changed += OnINTSliderOnchanged;
                 continue;
             }
 
             if (option is SettingInt justInt) {
                 CreateStringInput(justInt);
-                justInt.changed += (o) => { textInputs[option].SetTextWithoutNotify(o.ToString()); };
+
+                void OnJustIntOnchanged(int o) {
+                    textInputs[option].SetTextWithoutNotify(o.ToString());
+                }
+
+                settingIntActions.Add(justInt, OnJustIntOnchanged);
+                justInt.changed += OnJustIntOnchanged;
                 continue;
             }
             if (option is SettingFloat justFloat) {
                 CreateStringInput(justFloat);
-                justFloat.changed += (o) => { textInputs[option].SetTextWithoutNotify(o.ToString()); };
+
+                void OnJustFloatOnchanged(float o) {
+                    textInputs[option].SetTextWithoutNotify(o.ToString());
+                }
+
+                settingFloatActions.Add(justFloat, OnJustFloatOnchanged);
+                justFloat.changed += OnJustFloatOnchanged;
                 continue;
             }
             if (option is SettingString justString) {
                 CreateStringInput(justString);
-                justString.changed += (o) => { textInputs[option].SetTextWithoutNotify(o); };
+
+                void OnJustStringOnchanged(string o) {
+                    textInputs[option].SetTextWithoutNotify(o);
+                }
+                settingStringActions.Add(justString, OnJustStringOnchanged);
+
+                justString.changed += OnJustStringOnchanged;
                 continue;
             }
         }
@@ -189,6 +260,11 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         StartCoroutine(WaitUntilReadyThenStart());
         StartCoroutine(WaitAndThenSelect());
     }
+
+    private void OnDestroy() {
+        CleanUp();
+    }
+
     private IEnumerator WaitAndThenSelect() {
         yield return new WaitUntil(()=>ready);
         Setting topOption = SettingsManager.GetSettings()[0];
