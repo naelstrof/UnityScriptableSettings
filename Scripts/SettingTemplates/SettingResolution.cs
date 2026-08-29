@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace UnityScriptableSettings {
@@ -8,32 +9,31 @@ public class SettingResolution : SettingDropdown {
         int count = Screen.resolutions.Length;
         var dropdowns = new ScriptableSettingString[count];
         for(int i=0;i<count;i++) {
-            dropdowns[i] = new ScriptableSettingString($"{Screen.resolutions[i].width}x{Screen.resolutions[i].height}_{Screen.resolutions[i].refreshRate}");
+            dropdowns[i] = new ScriptableSettingString(Screen.resolutions[i].ToString());
         }
         return dropdowns;
     }
 
     public override void SetValue(int value) {
         Resolution r = Screen.resolutions[Mathf.RoundToInt(value)];
-        if (Screen.currentResolution.width != r.width || Screen.currentResolution.height != r.height || Screen.currentResolution.refreshRate != r.refreshRate) {
-            Screen.SetResolution(r.width, r.height, Screen.fullScreenMode, r.refreshRate);
+        if (Screen.currentResolution.width != r.width || Screen.currentResolution.height != r.height || Math.Abs(Screen.currentResolution.refreshRateRatio.value - r.refreshRateRatio.value) > 0.01f) {
+            Screen.SetResolution(r.width, r.height, Screen.fullScreenMode, r.refreshRateRatio);
         }
         base.SetValue(value);
     }
+    
     public override void Save() {
-        // This apparently can report 0x0_0 if the game is minimized or otherwise not displaying??
-        //Resolution r = Screen.currentResolution;
-        Resolution r = Screen.resolutions[Mathf.RoundToInt(GetValue())];
-        PlayerPrefs.SetInt ("Screenmanager Resolution Height", r.height);
-        PlayerPrefs.SetInt ("Screenmanager Resolution Width", r.width);
-        PlayerPrefs.SetInt ("Screenmanager Refresh Rate", r.refreshRate);
+        // Nothing to save, unity remembers the resolution automatically
     }
+    
     public override void Load() {
-        int height = PlayerPrefs.GetInt ("Screenmanager Resolution Height", Screen.resolutions[0].height);
-        int width = PlayerPrefs.GetInt ("Screenmanager Resolution Width", Screen.resolutions[0].width);
-        int refreshRate = PlayerPrefs.GetInt ("Screenmanager Refresh Rate", Screen.resolutions[0].refreshRate);
+        var currentResolution = Screen.currentResolution;
+        int height = currentResolution.height;
+        int width = currentResolution.width;
+        double refreshRate = currentResolution.refreshRateRatio.value;
+        
         for(int i=0;i<Screen.resolutions.Length;i++) {
-            if (Screen.resolutions[i].width == width && Screen.resolutions[i].height == height && Screen.resolutions[i].refreshRate == refreshRate) {
+            if (Screen.resolutions[i].width == width && Screen.resolutions[i].height == height && Math.Abs(Screen.resolutions[i].refreshRateRatio.value - refreshRate) < 0.01f) {
                 selectedValue = i;
                 break;
             }
