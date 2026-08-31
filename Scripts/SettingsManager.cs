@@ -52,7 +52,9 @@ public class SettingsManager : MonoBehaviour {
 
     private void Start() {
         settings.Sort((a,b)=>String.Compare(a.group.name.ToString(), b.group.name.ToString(), StringComparison.InvariantCulture));
-        Load();
+        foreach(var setting in settings) {
+            setting.Load();
+        }
     }
     public static void Save() {
         foreach(var setting in instance.settings) {
