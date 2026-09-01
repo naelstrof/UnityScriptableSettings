@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Localization;
 
 namespace UnityScriptableSettings {
     [CreateAssetMenu(fileName = "New Localized Dropdown", menuName = "Unity Scriptable Setting/Localized Dropdown", order = 35)]
