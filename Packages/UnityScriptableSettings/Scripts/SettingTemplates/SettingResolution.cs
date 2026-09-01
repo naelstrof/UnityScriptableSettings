@@ -21,7 +21,12 @@ public class SettingResolution : SettingDropdown {
         }
         base.SetValue(value);
     }
-    
+
+    public override void ResetToDefault() {
+        // Ignore resets
+        //base.ResetToDefault();
+    }
+
     public override void Save() {
         // Nothing to save, unity remembers the resolution automatically
     }
