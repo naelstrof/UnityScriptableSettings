@@ -9,7 +9,12 @@ public class SettingResolution : SettingDropdown {
         int count = Screen.resolutions.Length;
         var dropdowns = new ScriptableSettingString[count];
         for(int i=0;i<count;i++) {
-            dropdowns[i] = new ScriptableSettingString(Screen.resolutions[i].ToString());
+            if (Application.platform == RuntimePlatform.WindowsPlayer) {
+                dropdowns[i] = new ScriptableSettingString(Screen.resolutions[i].ToString());
+            } else {
+                var resolution = Screen.resolutions[i];
+                dropdowns[i] = new ScriptableSettingString($"{resolution.width} x {resolution.height}");
+            }
         }
         return dropdowns;
     }
@@ -38,9 +43,16 @@ public class SettingResolution : SettingDropdown {
         double refreshRate = currentResolution.refreshRateRatio.value;
         
         for(int i=0;i<Screen.resolutions.Length;i++) {
-            if (Screen.resolutions[i].width == width && Screen.resolutions[i].height == height && Math.Abs(Screen.resolutions[i].refreshRateRatio.value - refreshRate) < 0.01f) {
-                selectedValue = i;
-                break;
+            if (Application.platform == RuntimePlatform.WindowsPlayer) {
+                if (Screen.resolutions[i].width == width && Screen.resolutions[i].height == height && Math.Abs(Screen.resolutions[i].refreshRateRatio.value - refreshRate) < 0.01f) {
+                    selectedValue = i;
+                    break;
+                }
+            } else {
+                if (Screen.resolutions[i].width == width && Screen.resolutions[i].height == height) {
+                    selectedValue = i;
+                    break;
+                }
             }
         }
     }
