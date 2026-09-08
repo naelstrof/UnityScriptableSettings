@@ -258,26 +258,12 @@ public class ScriptableSettingSpawner : MonoBehaviour {
 
     void OnEnable() {
         StartCoroutine(WaitUntilReadyThenStart());
-        StartCoroutine(WaitAndThenSelect());
     }
 
     private void OnDestroy() {
         CleanUp();
     }
 
-    private IEnumerator WaitAndThenSelect() {
-        yield return new WaitUntil(()=>ready);
-        Setting topOption = SettingsManager.GetSettings()[0];
-        if (sliders.ContainsKey(topOption)) {
-            sliders[topOption].Select();
-        }
-        if (dropdowns.ContainsKey(topOption)) {
-            dropdowns[topOption].Select();
-        }
-        if (textInputs.ContainsKey(topOption)) {
-            textInputs[topOption].Select();
-        }
-    }
     public void CreateTitle(SettingGroup group) {
         GameObject title = GameObject.Instantiate(groupTitle, Vector3.zero, Quaternion.identity);
         title.transform.SetParent(this.transform);
