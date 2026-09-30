@@ -26,6 +26,7 @@ public class ScriptableSettingSpawner : MonoBehaviour {
     [Tooltip("If navigation mode is set to override, overflowing off the top of the list will select this object. Leaving it null will cause it to loop.")]
     public Selectable upSelect;
     public GameObject slider;
+    public GameObject toggle;
     public GameObject dropdown;
     public GameObject textInput;
     public GameObject groupTitle;
@@ -33,11 +34,13 @@ public class ScriptableSettingSpawner : MonoBehaviour {
     private Dictionary<Setting,Slider> sliders = new Dictionary<Setting, Slider>();
     private Dictionary<Setting,TMP_Dropdown> dropdowns = new Dictionary<Setting, TMP_Dropdown>();
     private Dictionary<Setting,TMP_InputField> textInputs = new Dictionary<Setting, TMP_InputField>();
-    
+    private Dictionary<Setting, Toggle> toggles = new Dictionary<Setting, Toggle>();
+
     private Dictionary<SettingInt, SettingInt.SettingIntAction> settingIntActions = new  Dictionary<SettingInt, SettingInt.SettingIntAction>();
     private Dictionary<SettingFloat, SettingFloat.SettingFloatAction> settingFloatActions = new  Dictionary<SettingFloat, SettingFloat.SettingFloatAction>();
     private Dictionary<SettingString, SettingString.SettingStringAction> settingStringActions = new  Dictionary<SettingString, SettingString.SettingStringAction>();
-    
+    private Dictionary<SettingBool, SettingBool.SettingBoolAction> settingBoolActions = new Dictionary<SettingBool, SettingBool.SettingBoolAction>();
+
     private bool ready;
     [SerializeField]
     private SettingGroup targetGroup;
@@ -53,7 +56,22 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         if (textInputs.ContainsKey(option)) {
             return textInputs[option];
         }
+        if (toggles.ContainsKey(option)) {
+            return toggles[option];
+        }
         return null;
+    }
+        
+    static private void SetLocalizedLabelText(TMP_Text text, ScriptableSettingString label) {
+        text.text = label.GetLocalizedString();
+        if (text.TryGetComponent<LocalizeStringEvent>(out var lse)) {
+            if (label.TryGetLocalizedLabel(out var localizedLabel)) {
+                lse.StringReference = localizedLabel;
+                lse.enabled = true;
+            } else {
+                lse.enabled = false;
+            }
+        }
     }
 
     private void CleanUp() {
@@ -72,9 +90,15 @@ public class ScriptableSettingSpawner : MonoBehaviour {
                 pair.Key.changed -= pair.Value;
             }
         }
+        foreach (var pair in settingBoolActions) {
+            if (pair.Key) {
+                pair.Key.changed -= pair.Value;
+            }
+         }
         settingIntActions.Clear();
         settingFloatActions.Clear();
         settingStringActions.Clear();
+        settingBoolActions.Clear();
         
         foreach (var title in titles) {
             if (title) {
@@ -92,6 +116,11 @@ public class ScriptableSettingSpawner : MonoBehaviour {
             }
         }
         foreach (var pair in textInputs) {
+            if (pair.Value) {
+                Destroy(pair.Value);
+            }
+        }
+        foreach (var pair in toggles) {
             if (pair.Value) {
                 Destroy(pair.Value);
             }
@@ -198,6 +227,15 @@ public class ScriptableSettingSpawner : MonoBehaviour {
                 justString.changed += OnJustStringOnchanged;
                 continue;
             }
+            if (option is SettingBool justBool) {
+                CreateBoolInput(justBool);
+                void OnJustBoolOnchanged(bool o) {
+                    toggles[option].isOn = o;
+                }
+                settingBoolActions.Add(justBool, OnJustBoolOnchanged);
+                justBool.changed += OnJustBoolOnchanged;
+                continue;
+            }
         }
         if (navigationMode == NavigationMode.Override) {
             int startRange = -1;
@@ -294,15 +332,7 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         foreach( TMP_Text t in s.GetComponentsInChildren<TMP_Text>()) {
             if (t.name == "Label") {
                 var label = option.GetLabel();
-                t.text = label.GetLocalizedString();
-                if (t.TryGetComponent<LocalizeStringEvent>(out var lse)) {
-                    if (label.TryGetLocalizedLabel(out var localizedLabel)) {
-                        lse.StringReference = localizedLabel;
-                        lse.enabled = true;
-                    } else {
-                        lse.enabled = false;
-                    }
-                }
+                SetLocalizedLabelText(t, label);
             }
             if (option is SettingIntClamped intClamped) {
                 if (t.name == "Min") {
@@ -342,17 +372,7 @@ public class ScriptableSettingSpawner : MonoBehaviour {
             if (t.name == "Label") {
                 //t.text = o.type.ToString();
                 var label = option.GetLabel();
-                t.text = label.GetLocalizedString();
-
-                if (t.TryGetComponent<LocalizeStringEvent>(out var localizedStringEvent)) {
-                    if (label.TryGetLocalizedLabel(out var localizedLabel)) {
-                        localizedStringEvent.enabled = true;
-                        localizedStringEvent.StringReference = localizedLabel;
-                    }
-                    else {
-                        localizedStringEvent.enabled = false;
-                    }
-                }
+                SetLocalizedLabelText(t, label);
             }
         }
         TMP_InputField inputField = d.GetComponentInChildren<TMP_InputField>();
@@ -399,6 +419,43 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         }
         textInputs.Add(option, inputField);
     }
+
+    public void CreateBoolInput(SettingBool option) {
+        GameObject s = GameObject.Instantiate(toggle, Vector3.zero, Quaternion.identity);
+        s.transform.SetParent(this.transform);
+        s.transform.localScale = Vector3.one;
+
+        // Value label to be captured by the lambda onValueChanged event to update the label.
+        TMP_Text? valueLabel = null;
+
+        foreach(TMP_Text t in s.GetComponentsInChildren<TMP_Text>()) {
+            if (t.name == "Label") {
+                var label = option.GetLabel();
+                SetLocalizedLabelText(t, label);
+            } else if (t.name == "On") {
+                var label = option.GetLocalizedOnOption();
+                SetLocalizedLabelText(t, label);
+            } else if (t.name == "Off") {
+                var label = option.GetLocalizedOffOption();
+                SetLocalizedLabelText(t, label);
+            }  else if (t.name == "Value") {
+                var label = option.GetValue() ? option.GetLocalizedOnOption() : option.GetLocalizedOffOption();
+                SetLocalizedLabelText(t, label);
+                valueLabel = t;
+            }
+        }
+        Toggle togg = s.GetComponentInChildren<Toggle>();
+        togg.SetIsOnWithoutNotify(option.GetValue());
+        togg.onValueChanged.AddListener((value) => {
+                option.SetValue(value);
+                if (valueLabel != null) {
+                    var label = option.GetValue() ? option.GetLocalizedOnOption() : option.GetLocalizedOffOption();
+                    SetLocalizedLabelText(valueLabel, label);
+                }
+            });
+        toggles.Add(option, togg);
+    }
+
     public void CreateDropDown(SettingInt option) {
         GameObject d = GameObject.Instantiate(dropdown, Vector3.zero, Quaternion.identity);
         d.transform.SetParent(this.transform);
@@ -407,16 +464,7 @@ public class ScriptableSettingSpawner : MonoBehaviour {
             if (t.name == "Label") {
                 //t.text = o.type.ToString();
                 var label = option.GetLabel();
-                t.text = label.GetLocalizedString();
-                if (t.TryGetComponent<LocalizeStringEvent>(out var lse)) {
-                    if (label.TryGetLocalizedLabel(out var localizedLabel)) {
-                        lse.StringReference = localizedLabel;
-                        lse.enabled = true;
-                    }
-                    else {
-                        lse.enabled = false;
-                    }
-                }
+                SetLocalizedLabelText(t, label);
             }
         }
         List<TMP_Dropdown.OptionData> data = new List<TMP_Dropdown.OptionData>();
