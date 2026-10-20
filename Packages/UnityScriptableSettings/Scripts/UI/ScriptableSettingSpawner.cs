@@ -94,7 +94,7 @@ public class ScriptableSettingSpawner : MonoBehaviour {
             if (pair.Key) {
                 pair.Key.changed -= pair.Value;
             }
-         }
+        }
         settingIntActions.Clear();
         settingFloatActions.Clear();
         settingStringActions.Clear();
@@ -303,9 +303,11 @@ public class ScriptableSettingSpawner : MonoBehaviour {
     }
 
     public void CreateTitle(SettingGroup group) {
-        GameObject title = GameObject.Instantiate(groupTitle, Vector3.zero, Quaternion.identity);
-        title.transform.SetParent(this.transform);
+        GameObject title = Instantiate(groupTitle, Vector3.zero, Quaternion.identity);
+        title.transform.SetParent(transform, false);
         title.transform.localScale = Vector3.one;
+        title.transform.localPosition = Vector3.zero;
+        title.transform.localRotation = Quaternion.identity;
         foreach( TMP_Text t in title.GetComponentsInChildren<TMP_Text>()) {
             if (t.name == "Label") {
                 t.text = group.GetLabel().GetLocalizedString();
@@ -326,9 +328,11 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         titles.Add(title);
     }
     private void CreateSlider(Setting option) {
-        GameObject s = GameObject.Instantiate(slider, Vector3.zero, Quaternion.identity);
-        s.transform.SetParent(this.transform);
+        GameObject s = Instantiate(slider, Vector3.zero, Quaternion.identity);
+        s.transform.SetParent(transform, false);
         s.transform.localScale = Vector3.one;
+        s.transform.localPosition = Vector3.zero;
+        s.transform.localRotation = Quaternion.identity;
         foreach( TMP_Text t in s.GetComponentsInChildren<TMP_Text>()) {
             if (t.name == "Label") {
                 var label = option.GetLabel();
@@ -365,9 +369,11 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         sliders.Add(option, slid);
     }
     private void CreateStringInput(Setting option) {
-        GameObject d = GameObject.Instantiate(textInput, Vector3.zero, Quaternion.identity);
-        d.transform.SetParent(this.transform);
+        GameObject d = Instantiate(textInput, Vector3.zero, Quaternion.identity);
+        d.transform.SetParent(transform, false);
         d.transform.localScale = Vector3.one;
+        d.transform.localPosition = Vector3.zero;
+        d.transform.localRotation = Quaternion.identity;
         foreach( TMP_Text t in d.GetComponentsInChildren<TMP_Text>()) {
             if (t.name == "Label") {
                 //t.text = o.type.ToString();
@@ -421,9 +427,11 @@ public class ScriptableSettingSpawner : MonoBehaviour {
     }
 
     public void CreateBoolInput(SettingBool option) {
-        GameObject s = GameObject.Instantiate(toggle, Vector3.zero, Quaternion.identity);
-        s.transform.SetParent(this.transform);
+        GameObject s = Instantiate(toggle, Vector3.zero, Quaternion.identity);
+        s.transform.SetParent(transform, false);
         s.transform.localScale = Vector3.one;
+        s.transform.localPosition = Vector3.zero;
+        s.transform.localRotation = Quaternion.identity;
 
         // Value label to be captured by the lambda onValueChanged event to update the label.
         TMP_Text? valueLabel = null;
@@ -452,13 +460,15 @@ public class ScriptableSettingSpawner : MonoBehaviour {
                     var label = option.GetValue() ? option.GetLocalizedOnOption() : option.GetLocalizedOffOption();
                     SetLocalizedLabelText(valueLabel, label);
                 }
-            });
+        });
         toggles.Add(option, togg);
     }
 
     public void CreateDropDown(SettingInt option) {
-        GameObject d = GameObject.Instantiate(dropdown, Vector3.zero, Quaternion.identity);
-        d.transform.SetParent(this.transform);
+        GameObject d = Instantiate(dropdown, Vector3.zero, Quaternion.identity);
+        d.transform.SetParent(transform, false);
+        d.transform.localPosition = Vector3.zero;
+        d.transform.localRotation = Quaternion.identity;
         d.transform.localScale = Vector3.one;
         foreach( TMP_Text t in d.GetComponentsInChildren<TMP_Text>()) {
             if (t.name == "Label") {
