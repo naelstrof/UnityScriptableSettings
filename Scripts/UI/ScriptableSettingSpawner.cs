@@ -139,7 +139,7 @@ public class ScriptableSettingSpawner : MonoBehaviour {
         yield return null;
         SettingGroup currentGroup = null;
         foreach(Setting option in SettingsManager.GetSettings()) {
-            if (targetGroup != null && option.group != targetGroup && option.group.IsEnabled) {
+            if (targetGroup != null && option.group != targetGroup && (option.group?.IsEnabled ?? true)) {
                 continue;
             }
             if (currentGroup != option.group || currentGroup == null) {
