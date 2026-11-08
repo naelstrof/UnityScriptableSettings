@@ -8,6 +8,7 @@ public class SettingGroup : ScriptableObject {
     public ScriptableSettingString GetLabel() {
         return label;
     }
+    public virtual bool IsEnabled => true;
 }
 
 }

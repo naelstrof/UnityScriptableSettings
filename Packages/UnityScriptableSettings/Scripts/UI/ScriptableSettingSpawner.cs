@@ -142,6 +142,9 @@ public class ScriptableSettingSpawner : MonoBehaviour {
             if (targetGroup != null && option.group != targetGroup) {
                 continue;
             }
+            if (option.group != null && !option.group.IsEnabled) {
+                continue;
+            }
             if (currentGroup != option.group || currentGroup == null) {
                 CreateTitle(option.group);
                 currentGroup = option.group;
